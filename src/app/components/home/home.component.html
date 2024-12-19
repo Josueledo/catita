@@ -1,0 +1,187 @@
+<div class="container">
+  <div class="header_container">
+    <div class="top_header">
+      <fa-icon [icon]="faPaperPlane"></fa-icon>
+      <h1>COMPRE 3 LEVE 4 CAMISETAS!</h1>
+    </div>
+    <div class="header">
+      <div class="logo">
+        <img src="./logo.png" alt="" />
+      </div>
+      <div class="input">
+        <input type="text" placeholder="Buscar produto..." />
+        <button>
+          <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+        </button>
+      </div>
+
+      <div class="cart_icon">
+        <fa-icon [icon]="faCartShopping"></fa-icon>
+      </div>
+    </div>
+    <div class="categoria"></div>
+  </div>
+  <div class="carrosel"></div>
+  <div class="info">
+    <div class="card">
+      <fa-icon [icon]="faCartShopping"></fa-icon>
+      <span>Free Delivery</span>
+    </div>
+    <div class="card">
+      <fa-icon [icon]="faCartShopping"></fa-icon>
+      <span>Free Delivery</span>
+    </div>
+    <div class="card">
+      <fa-icon [icon]="faCartShopping"></fa-icon>
+      <span>Free Delivery</span>
+    </div>
+    <div class="card">
+      <fa-icon [icon]="faCartShopping"></fa-icon>
+      <span>Free Delivery</span>
+    </div>
+  </div>
+
+  <div class="catalogo">
+    <div class="title_container">
+      <h1 class="title">Mais Vendidos</h1>
+      <span class="sub">Confira os produtos mais vendidos</span>
+    </div>
+    <div class="card_container">
+      @for (camisa of camisas; track $index) {
+
+        <div class="card">
+          <div class="img_container">
+            <img src={{camisa.image}} alt="" />
+          </div>
+          <div class="title">
+            <h2>{{camisa.title}}</h2>
+          </div>
+          <div class="price_container">
+            <div class="fullPrice">
+              <span>R$ {{camisa.fullPrice}}</span>
+            </div>
+            <div class="price">
+              <span> R$ {{camisa.price}},00</span>
+            </div>
+          </div>
+          <div class="details">
+            <span>Em até 12x de <strong>R$17,22</strong></span>
+            <span>ou <span class="desconto">R$ {{camisa.price *10 / 100}},00</span> via PIX</span>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+  <div class="menu">
+    <div class="card1"></div>
+    <div class="cards_container">
+      <div class="card2"></div>
+      <div class="card3"></div>
+    </div>
+    <div class="card4"></div>
+  </div>
+
+  <div class="catalogo">
+    <div class="title_container">
+      <h1 class="title">Lancamentos</h1>
+      <span class="sub">Confira os produtos mais vendidos</span>
+    </div>
+    <div class="card_container">
+      <div class="card">
+        <div class="img_container">
+          <img src="./1.jpg" alt="" />
+        </div>
+        <div class="title">
+          <h2>Camisa do Santos X CBJR LEgacy</h2>
+        </div>
+        <div class="price_container">
+          <div class="fullPrice">
+            <span>R$ 240,90</span>
+          </div>
+          <div class="price">
+            <span> R$ 190,90</span>
+          </div>
+        </div>
+        <div class="details">
+          <span>Em até 12x de <strong>R$17,22</strong></span>
+          <span>ou <span class="desconto">R$161,41</span> via PIX</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img_container">
+          <img src="./1.jpg" alt="" />
+        </div>
+        <div class="title">
+          <h2>Camisa do Santos X CBJR LEgacy</h2>
+        </div>
+        <div class="price_container">
+          <div class="fullPrice">
+            <span>R$ 240,90</span>
+          </div>
+          <div class="price">
+            <span> R$ 190,90</span>
+          </div>
+        </div>
+        <div class="details">
+          <span>Em até 12x de <strong>R$17,22</strong></span>
+          <span>ou <span class="desconto">R$161,41</span> via PIX</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img_container">
+          <img src="./1.jpg" alt="" />
+        </div>
+        <div class="title">
+          <h2>Camisa do Santos X CBJR LEgacy</h2>
+        </div>
+        <div class="price_container">
+          <div class="fullPrice">
+            <span>R$ 240,90</span>
+          </div>
+          <div class="price">
+            <span> R$ 190,90</span>
+          </div>
+        </div>
+        <div class="details">
+          <span>Em até 12x de <strong>R$17,22</strong></span>
+          <span>ou <span class="desconto">R$161,41</span> via PIX</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img_container">
+          <img src="./1.jpg" alt="" />
+        </div>
+        <div class="title">
+          <h2>Camisa do Santos X CBJR LEgacy</h2>
+        </div>
+        <div class="price_container">
+          <div class="fullPrice">
+            <span>R$ 240,90</span>
+          </div>
+          <div class="price">
+            <span> R$ 190,90</span>
+          </div>
+        </div>
+        <div class="details">
+          <span>Em até 12x de <strong>R$17,22</strong></span>
+          <span>ou <span class="desconto">R$161,41</span> via PIX</span>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="feedback">
+  <h1 class="title">What our Clients say!</h1>
+  <div class="line"></div>
+
+  <div class="card_container">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+</div>
+
+<footer>
+
+</footer>
