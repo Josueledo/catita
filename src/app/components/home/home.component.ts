@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPaperPlane, faMagnifyingGlass, faCartShopping} from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faMagnifyingGlass, faCartShopping, faQuoteLeft, faStar} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +13,8 @@ export class HomeComponent {
   faPaperPlane = faPaperPlane;
   faMagnifyingGlass = faMagnifyingGlass
   faCartShopping = faCartShopping
+  faQuoteLeft= faQuoteLeft
+  faStar = faStar
 
   camisas = [
     {

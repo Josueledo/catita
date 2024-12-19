@@ -49,29 +49,32 @@
     <div class="card_container">
       @for (camisa of camisas; track $index) {
 
-        <div class="card">
-          <div class="img_container">
-            <img src={{camisa.image}} alt="" />
+      <div class="card">
+        <div class="img_container">
+          <img src="{{ camisa.image }}" alt="" />
+        </div>
+        <div class="title">
+          <h2>{{ camisa.title }}</h2>
+        </div>
+        <div class="price_container">
+          <div class="fullPrice">
+            <span>R$ {{ camisa.fullPrice }}</span>
           </div>
-          <div class="title">
-            <h2>{{camisa.title}}</h2>
-          </div>
-          <div class="price_container">
-            <div class="fullPrice">
-              <span>R$ {{camisa.fullPrice}}</span>
-            </div>
-            <div class="price">
-              <span> R$ {{camisa.price}},00</span>
-            </div>
-          </div>
-          <div class="details">
-            <span>Em até 12x de <strong>R$17,22</strong></span>
-            <span>ou <span class="desconto">R$ {{camisa.price *10 / 100}},00</span> via PIX</span>
+          <div class="price">
+            <span> R$ {{ camisa.price }},00</span>
           </div>
         </div>
+        <div class="details">
+          <span>Em até 12x de <strong>R$17,22</strong></span>
+          <span
+            >ou
+            <span class="desconto">R$ {{ (camisa.price * 10) / 100 }},00</span>
+            via PIX</span
+          >
+        </div>
+      </div>
       }
     </div>
-
   </div>
   <div class="menu">
     <div class="card1"></div>
@@ -169,19 +172,108 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 
-<div class="feedback">
-  <h1 class="title">What our Clients say!</h1>
-  <div class="line"></div>
+  <div class="feedback">
+    <div class="title">
+      <h1>What our Clients say!</h1>
+      <div class="line"></div>
+    </div>
 
-  <div class="card_container">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <div class="card_container">
+      <div class="card">
+        <div class="icon">
+          <fa-icon [icon]="faQuoteLeft"></fa-icon>
+        </div>
+        <span
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
+          nemo beatae optio molestias exercitation</span
+        >
+        <div class="image"></div>
+        <div class="name">CURURU</div>
+        <div class="stars">
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <fa-icon [icon]="faQuoteLeft"></fa-icon>
+        </div>
+        <span
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
+          nemo beatae optio molestias exercitation</span
+        >
+        <div class="image"></div>
+        <div class="name">CURURU</div>
+        <div class="stars">
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <fa-icon [icon]="faQuoteLeft"></fa-icon>
+        </div>
+        <span
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
+          nemo beatae optio molestias exercitation</span
+        >
+        <div class="image"></div>
+        <div class="name">CURURU</div>
+        <div class="stars">
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="social">
+      <div class="icon">
+        <fa-icon [icon]="faCartShopping"></fa-icon>
+      </div>
+      <div class="icon">
+        <fa-icon [icon]="faCartShopping"></fa-icon>
+      </div>
+      <div class="icon">
+        <fa-icon [icon]="faCartShopping"></fa-icon>
+      </div>
+      <div class="icon">
+        <fa-icon [icon]="faCartShopping"></fa-icon>
+      </div>
+    </div>
+    <div class="menu_footer">
+      <ul>
+        <li>HOME</li>
+        <li>MENU</li>
+        <li>CATALOGO</li>
+        <li>OTHER</li>
+        <li>CONTACT</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <ul>
+        <li>CONTACT</li>
+        <div class="line"></div>
+        <li>BLOG</li>
+        <div class="line"></div>
+        <li>CATERING</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="whatsapp">
+<img src="./whatsapp.png" alt="">
   </div>
 </div>
-
-<footer>
-
-</footer>
