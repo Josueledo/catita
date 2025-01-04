@@ -1,27 +1,102 @@
+@defer{
+<p-sidebar
+  [(visible)]="displaySidebar"
+  position="right"
+  [baseZIndex]="1005"
+  (onHide)="onSidebarHide($event)"
+>
+  <div class="null" (click)="$event.stopPropagation()">
+    <span>Nada no carrinho...</span>
+
+    @for (product of carrinho; track $index) {
+    <div class="item">
+      <div class="image">
+        <img src="{{ product.image1 }}" alt="" />
+      </div>
+      <div class="content">
+        <div class="title">
+          <h3>{{ product.title }}</h3>
+        </div>
+        <div class="size">
+          <span>Tamanho: {{ product.size }}</span>
+          @if (product.custom_name !== "") {
+          <span>Nome: {{ product.custom_name }}</span>
+          } @if (product.custom_number !== "") {
+          <span>Numero: {{ product.custom_number }}</span>
+          }
+        </div>
+        <div class="total">
+          <div class="qtd_container">
+            <button class="menos">-</button>
+            <button class="qtd">{{ product.quantity }}</button>
+            <button class="mais">+</button>
+          </div>
+          <span>R${{ product.price }},00</span>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <button class="finish">Finalizar compra</button>
+</p-sidebar>
 <div class="container">
   <div class="header_container">
     <div class="top_header">
       <fa-icon [icon]="faPaperPlane"></fa-icon>
       <h1>COMPRE 3 LEVE 4 CAMISETAS!</h1>
     </div>
+    <div class="header_mobile">
+      <div class="logo">
+        <img src="./logo.png" alt="" />
+      </div>
+      <div class="cart_icon" (click)="displaySidebar = true">
+        <fa-icon [icon]="faBagShopping"></fa-icon>
+        <fa-icon [icon]="faBars" class="bars"></fa-icon>
+      </div>
+    </div>
     <div class="header">
       <div class="logo">
         <img src="./logo.png" alt="" />
       </div>
       <div class="input">
-        <input type="text" placeholder="Buscar produto..." />
-        <button>
+        <input
+          type="text"
+          placeholder="Buscar produto..."
+          [(ngModel)]="searchTerm"
+        />
+        <button (click)="onSearch()">
           <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
         </button>
       </div>
 
-      <div class="cart_icon">
-        <fa-icon [icon]="faCartShopping"></fa-icon>
+      <div class="cart_icon" (click)="displaySidebar = true">
+        <fa-icon [icon]="faBagShopping"></fa-icon>
       </div>
     </div>
-    <div class="categoria"></div>
+    <div class="categoria">
+      <p-megaMenu [model]="items">
+
+      </p-megaMenu>
+    </div>
   </div>
-  <div class="carrosel"></div>
+
+  <div class="carrosel">
+    <p-carousel
+      [value]="images"
+      styleClass="custom-carousel"
+      [numVisible]="1"
+      [numScroll]="1"
+      [circular]="true"
+    >
+      <ng-template let-image pTemplate="image_container">
+        <div
+          class="image"
+          [style.background-image]="'url(' + image.url + ')'"
+          alt=""
+        ></div>
+      </ng-template>
+    </p-carousel>
+  </div>
   <div class="info">
     <div class="card">
       <fa-icon [icon]="faCartShopping"></fa-icon>
@@ -29,11 +104,11 @@
     </div>
     <div class="card">
       <fa-icon [icon]="faCartShopping"></fa-icon>
-      <span>Free Delivery</span>
+      <span>Free Support</span>
     </div>
     <div class="card">
       <fa-icon [icon]="faCartShopping"></fa-icon>
-      <span>Free Delivery</span>
+      <span>Get Vouvher</span>
     </div>
     <div class="card">
       <fa-icon [icon]="faCartShopping"></fa-icon>
@@ -41,41 +116,57 @@
     </div>
   </div>
 
-  <div class="catalogo">
-    <div class="title_container">
-      <h1 class="title">Mais Vendidos</h1>
-      <span class="sub">Confira os produtos mais vendidos</span>
-    </div>
-    <div class="card_container">
-      @for (camisa of camisas; track $index) {
-
-      <div class="card">
-        <div class="img_container">
-          <img src="{{ camisa.image }}" alt="" />
-        </div>
-        <div class="title">
-          <h2>{{ camisa.title }}</h2>
-        </div>
-        <div class="price_container">
-          <div class="fullPrice">
-            <span>R$ {{ camisa.fullPrice }}</span>
+  <div class="title_container">
+    <h1 class="title">Mais vendidos</h1>
+    <span class="sub">Confira os produtos mais vendidos</span>
+  </div>
+  <p-carousel
+    [value]="products"
+    styleClass="custom-carousel"
+    [numVisible]="3"
+    [numScroll]="1"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="card_container">
+        <div
+          class="card"
+          routerLink="/product-details/{{ product.id }}"
+          (mouseover)="hover(product)"
+        >
+          <div class="img_container">
+            <img src="{{ product.image1 }}" alt="" />
           </div>
-          <div class="price">
-            <span> R$ {{ camisa.price }},00</span>
+          <div class="title">
+            <h2>{{ product.title }}</h2>
           </div>
-        </div>
-        <div class="details">
-          <span>Em até 12x de <strong>R$17,22</strong></span>
-          <span
-            >ou
-            <span class="desconto">R$ {{ (camisa.price * 10) / 100 }},00</span>
-            via PIX</span
-          >
+          <div class="price_container">
+            <div class="fullPrice">
+              <span>R$ {{ product.fullPrice }},00</span>
+            </div>
+            <div class="price">
+              <span> R$ {{ product.price }},00</span>
+            </div>
+          </div>
+          <div class="details">
+            <span
+              >Em até 3x de
+              <strong>{{ (product.price / 3).toFixed(2) }}</strong></span
+            >
+            <span
+              >ou
+              <span class="desconto"
+                >R$ {{ (product.price * 10) / 100 }},00</span
+              >
+              via PIX</span
+            >
+          </div>
         </div>
       </div>
-      }
-    </div>
-  </div>
+    </ng-template>
+  </p-carousel>
+
   <div class="menu">
     <div class="card1"></div>
     <div class="cards_container">
@@ -85,94 +176,52 @@
     <div class="card4"></div>
   </div>
 
-  <div class="catalogo">
-    <div class="title_container">
-      <h1 class="title">Lancamentos</h1>
-      <span class="sub">Confira os produtos mais vendidos</span>
-    </div>
-    <div class="card_container">
-      <div class="card">
-        <div class="img_container">
-          <img src="./1.jpg" alt="" />
-        </div>
-        <div class="title">
-          <h2>Camisa do Santos X CBJR LEgacy</h2>
-        </div>
-        <div class="price_container">
-          <div class="fullPrice">
-            <span>R$ 240,90</span>
-          </div>
-          <div class="price">
-            <span> R$ 190,90</span>
-          </div>
-        </div>
-        <div class="details">
-          <span>Em até 12x de <strong>R$17,22</strong></span>
-          <span>ou <span class="desconto">R$161,41</span> via PIX</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="img_container">
-          <img src="./1.jpg" alt="" />
-        </div>
-        <div class="title">
-          <h2>Camisa do Santos X CBJR LEgacy</h2>
-        </div>
-        <div class="price_container">
-          <div class="fullPrice">
-            <span>R$ 240,90</span>
-          </div>
-          <div class="price">
-            <span> R$ 190,90</span>
-          </div>
-        </div>
-        <div class="details">
-          <span>Em até 12x de <strong>R$17,22</strong></span>
-          <span>ou <span class="desconto">R$161,41</span> via PIX</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="img_container">
-          <img src="./1.jpg" alt="" />
-        </div>
-        <div class="title">
-          <h2>Camisa do Santos X CBJR LEgacy</h2>
-        </div>
-        <div class="price_container">
-          <div class="fullPrice">
-            <span>R$ 240,90</span>
-          </div>
-          <div class="price">
-            <span> R$ 190,90</span>
-          </div>
-        </div>
-        <div class="details">
-          <span>Em até 12x de <strong>R$17,22</strong></span>
-          <span>ou <span class="desconto">R$161,41</span> via PIX</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="img_container">
-          <img src="./1.jpg" alt="" />
-        </div>
-        <div class="title">
-          <h2>Camisa do Santos X CBJR LEgacy</h2>
-        </div>
-        <div class="price_container">
-          <div class="fullPrice">
-            <span>R$ 240,90</span>
-          </div>
-          <div class="price">
-            <span> R$ 190,90</span>
-          </div>
-        </div>
-        <div class="details">
-          <span>Em até 12x de <strong>R$17,22</strong></span>
-          <span>ou <span class="desconto">R$161,41</span> via PIX</span>
-        </div>
-      </div>
-    </div>
+  <div class="title_container">
+    <h1 class="title">Lancamentos</h1>
+    <span class="sub">Confira os produtos mais vendidos</span>
   </div>
+  <p-carousel
+    [value]="products"
+    styleClass="custom-carousel"
+    [numVisible]="3"
+    [numScroll]="1"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="card_container">
+        <div class="card" routerLink="/product-details/{{ product.id }}">
+          <div class="img_container">
+            <img src="{{ product.image1 }}" alt="" />
+          </div>
+          <div class="title">
+            <h2>{{ product.title }}</h2>
+          </div>
+          <div class="price_container">
+            <div class="fullPrice">
+              <span>R$ {{ product.fullPrice }},00</span>
+            </div>
+            <div class="price">
+              <span> R$ {{ product.price }},00</span>
+            </div>
+          </div>
+          <div class="details">
+            <span
+              >Em até 3x de
+              <strong>{{ (product.price / 3).toFixed(2) }}</strong></span
+            >
+            <span
+              >ou
+              <span class="desconto"
+                >R$ {{ (product.price * 10) / 100 }},00</span
+              >
+              via PIX</span
+            >
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
 
   <div class="feedback">
     <div class="title">
@@ -238,42 +287,14 @@
     </div>
   </div>
 
-  <div class="footer">
-    <div class="social">
-      <div class="icon">
-        <fa-icon [icon]="faCartShopping"></fa-icon>
-      </div>
-      <div class="icon">
-        <fa-icon [icon]="faCartShopping"></fa-icon>
-      </div>
-      <div class="icon">
-        <fa-icon [icon]="faCartShopping"></fa-icon>
-      </div>
-      <div class="icon">
-        <fa-icon [icon]="faCartShopping"></fa-icon>
-      </div>
-    </div>
-    <div class="menu_footer">
-      <ul>
-        <li>HOME</li>
-        <li>MENU</li>
-        <li>CATALOGO</li>
-        <li>OTHER</li>
-        <li>CONTACT</li>
-      </ul>
-    </div>
-    <div class="sub">
-      <ul>
-        <li>CONTACT</li>
-        <div class="line"></div>
-        <li>BLOG</li>
-        <div class="line"></div>
-        <li>CATERING</li>
-      </ul>
-    </div>
-  </div>
+  <app-footer></app-footer>
 
   <div class="whatsapp">
-<img src="./whatsapp.png" alt="">
+    <img src="./whatsapp.png" alt="" />
   </div>
 </div>
+} @loading {
+  <div class="container">
+    <h1 class="loading">CATITA</h1>
+  </div>
+}

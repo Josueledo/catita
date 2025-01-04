@@ -1,14 +1,366 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 $white: #fff;
-$primary: #C6B22A;
-$primaryFont: #D2C252;
+$primary: #c6b22a;
+$primaryFont: #d2c252;
 $gray: rgb(46, 46, 46);
 $background: #161616;
-$desconto: #03B37B;
+$backgroundGray: #272727;
+$desconto: #03b37b;
+$whiteGray: rgb(190, 190, 190);
+
+p-carousel {
+  width: 90%;
+  .p-carousel-content-container {
+    .p-carousel-content {
+      gap: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .p-carousel-prev-button,
+      .p-carousel-next-button {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+      .p-carousel-prev-button {
+        left: 0;
+      }
+      .p-carousel-next-button {
+        right: 0;
+      }
+      .p-ripple {
+        filter: drop-shadow(5px 5px 10px black);
+      }
+    }
+  }
+}
+
+.p-carousel-viewport {
+  overflow: hidden;
+  max-width: 1200px;
+}
+.p-carousel-indicator-active .p-carousel-indicator-button {
+  background: $primary !important;
+}
+.p-button-text {
+  background: transparent;
+  border-color: transparent;
+  color: $primary !important;
+}
+.p-tablist-tab-list {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: rgb(192, 192, 192) !important;
+  border-style: solid;
+  border-color: var(--p-tabs-tablist-border-color);
+  border-width: var(--p-tabs-tablist-border-width);
+  span {
+    color: gray;
+  }
+  button {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .numberIcon {
+      background-color: gray;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 400;
+      color: white;
+      border-radius: 50%;
+    }
+  }
+}
+.p-tab-active {
+  background: rgb(237, 237, 237) !important;
+  border: none !important;
+  color: $background !important;
+  span {
+    color: #161616;
+  }
+  .numberIcon {
+    background-color: #161616 !important;
+  }
+}
+.p-tabpanels {
+  background-color: white !important;
+  height: 100%;
+}
+.p-drawer-right .p-drawer {
+  width: 25rem !important;
+}
+
+.p-step-panels {
+  background-color: red !important;
+}
+p-tabview {
+  height: 100% !important;
+}
+.p-tabview-panel {
+  height: 100% !important;
+  margin: 0 !important;
+}
+.p-drawer {
+  height: 100%;
+  background-color: $white !important;
+  .p-drawer-content {
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+  }
+  .p-drawer-header {
+    display: flex;
+    justify-content: end;
+    border-bottom: 1px solid $whiteGray;
+    &::after {
+      content: "CATITA";
+      position: absolute;
+      left: 20px;
+      color: $gray;
+      font-weight: 600;
+    }
+    .p-button {
+      background-color: transparent !important;
+      border: none;
+      &:hover {
+        opacity: 0.8;
+        border: none;
+      }
+    }
+  }
+}
+button {
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(190, 190, 190, 0.241);
+  border-radius: 5px;
+}
+
+.null {
+  color: gray;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  overflow-y: scroll;
+  gap: 20px;
+  height: 90%;
+  flex-direction: column;
+  span {
+    padding: 10px 25px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid $whiteGray !important;
+    color: gray;
+    font-size: 0.8rem;
+  }
+  .item {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    .image {
+      height: 100%;
+      img {
+        max-width: 100px;
+        border-radius: 10px;
+      }
+    }
+    .content {
+      width: 100%;
+      height: 90%;
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+      span {
+        width: 100%;
+        border: none !important;
+        color: gray;
+        font-size: 0.8rem;
+      }
+      .title {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        button {
+          width: 20px;
+          height: 20px;
+          background-color: transparent;
+          color: rgb(234, 126, 126);
+          border: none;
+        }
+        h3 {
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 18px;
+        }
+      }
+      .size {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        span {
+          display: flex;
+          padding: 0 !important;
+          font-weight: 700;
+        }
+      }
+      .total {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .qtd_container {
+          width: 100%;
+          button {
+            width: 25px;
+            height: 25px;
+            background-color: transparent;
+            border: 1px solid $whiteGray;
+            color: gray;
+            &.qtd {
+              width: 20px;
+            }
+          }
+        }
+        span {
+          padding: 0;
+          color: $gray;
+          font-weight: 700;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+p-sidebar {
+}
+.finish {
+  background-color: $primary;
+  border: none;
+  padding: 10px;
+  left: calc(50% - 40%);
+  // position: absolute;
+  bottom: 0;
+  width: 100%;
+  // margin-bottom: 30px;
+}
+.total {
+  color: gray;
+}
+.p-tablist-active-bar {
+  z-index: 1;
+  display: block;
+  position: absolute;
+  bottom: var(--p-tabs-active-bar-bottom);
+  height: var(--p-tabs-active-bar-height);
+  background: $primary;
+  transition: 250ms cubic-bezier(0.35, 0, 0.25, 1);
+}
+.form-container {
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  input {
+    background-color: white;
+    color: gray;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 0.8rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(191, 255, 0, 0.25);
+}
+
+.btn-submit {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: $primary;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-submit:hover {
+  background-color: $primary;
+}
+
+@media (width <= 450px) {
+  .p-drawer-right .p-drawer {
+    width: 100% !important;
+  }
+  .p-drawer .p-drawer-header {
+    display: flex;
+    justify-content: end;
+    border-bottom: 1px solid rgb(190, 190, 190);
+    height: 50px !important;
+  }
+  .p-tablist-tab-list button {
+    width: 50%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .p-tab-active {
+    background: rgb(244, 244, 244) !important;
+    border: none !important;
+    color: $background !important;
+  }
+}
