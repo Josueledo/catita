@@ -17,9 +17,11 @@ import { Router, RouterLink } from '@angular/router';
 import { SidebarModule } from 'primeng/sidebar';
 import { SkeletonModule } from 'primeng/skeleton';
 import { FooterComponent } from '../footer/footer.component';
-import { FormsModule } from '@angular/forms';
-import { MegaMenuModule } from 'primeng/megamenu';
-import { MegaMenuItem } from 'primeng/api';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { MenuItem } from 'primeng/api';
+import { TabPanel, TabViewModule } from 'primeng/tabview';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +35,10 @@ import { MegaMenuItem } from 'primeng/api';
     SkeletonModule,
     FooterComponent,
     FormsModule,
-    MegaMenuModule,
+    PanelMenuModule,
+    ReactiveFormsModule,
+    TabPanel,
+    TabViewModule
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -49,7 +54,13 @@ export class HomeComponent {
   faBagShopping = faBagShopping;
   carrinho: any = [];
   searchTerm: string = '';
-  items!: MegaMenuItem[];
+  items!: MenuItem[];
+  total: number = 0;
+    enderecoForm: FormGroup;
+    activeTabIndex: number = 0; // Define o índice da aba ativa
+
+  quantity: number = 1; // Quantidade inicial
+  phoneNumber = '5533988711659';
 
   // itemsCarrinho = localStorage.getItem("carrinho")
   private crudService = inject(CrudService);
@@ -60,16 +71,34 @@ export class HomeComponent {
   products: any = [];
   firebaseItems: any = [];
   images = [
-    { id: 1, url: 'https://imgnike-a.akamaihd.net/branding/home-sbf/touts/Banner-Corinthians-03-09-desk.jpg' },
-    { id: 2, url: 'https://imgnike-a.akamaihd.net/branding/home-sbf/touts/banner-nike-app-08-03-desk.jpg' },
+    {
+      id: 1,
+      url: 'https://imgnike-a.akamaihd.net/branding/home-sbf/touts/Banner-Corinthians-03-09-desk.jpg',
+    },
+    {
+      id: 2,
+      url: 'https://imgnike-a.akamaihd.net/branding/home-sbf/touts/banner-nike-app-08-03-desk.jpg',
+    },
   ];
+
+
+
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
-    private router: Router
+    private router: Router,private fb: FormBuilder
   ) {
+    this.enderecoForm = this.fb.group({
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      cep: ['', Validators.required],
+      numero: ['', Validators.required],
+      numeroCasa: ['', Validators.required],
+      cidade: ['', Validators.required],
+    });
     this.crudService.getItems().subscribe((data) => {
       this.products = data;
+      console.log(this.products[0].categoria);
     });
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
@@ -81,7 +110,9 @@ export class HomeComponent {
   closeSidebar() {
     this.displaySidebar = false;
   }
-
+  nextTab() {
+    this.activeTabIndex = 1; // Muda para a aba de endereço
+  }
   ngOnInit() {
     console.log(this.getItem('carrinho'));
 
@@ -115,121 +146,46 @@ export class HomeComponent {
     ];
     this.items = [
       {
-        label: 'Ofertas',
-        icon: '1',
+        label: 'Camisas de futebol',
         items: [
-          [
-            {
-              label: 'Masculino',
-              items: [
-                { label: 'Roupas' },
-                { label: 'Calçados' },
-                { label: 'Acessorios' },
-              ],
-            },
-          ],
-          [
-            {
-              label: 'Feminino',
-              items: [
-                { label: 'Roupas' },
-                { label: 'Calçados' },
-                { label: 'Acessorios' },
-              ],
-            },
-          ],
-          [
-            {
-              label: 'Infantil',
-              items: [
-                { label: 'Roupas' },
-                { label: 'Calçados' },
-                { label: 'Acessorios' },
-              ],
-            },
-          ],
+          {
+            label: 'Masculina',
+            items: [
+              {
+                label: 'Versao jogador',
+                items: [
+                  {
+                    label: 'Botafogo',
+                    command: () => this.onCategorySelected('botafogo'),
+                  },
+                  {
+                    label: 'Flamengo',
+                    command: () => this.onCategorySelected('flamengo'),
+                  },
+                  {
+                    label: 'Corinthians',
+                    command: () => this.onCategorySelected('corinthians'),
+                  },
+                ],
+              },
+              {
+                label: 'Versão de Torcedo',
+                items: [{ label: 'Corinthians' }, { label: 'Palmeiras' }],
+              },
+              {
+                label: 'Retrô',
+                items: [{ label: 'Corinthians' }, { label: 'Palmeiras' }],
+              },
+            ],
+          },
         ],
       },
       {
-        label: 'Masculino',
-        icon: '1',
+        label: 'Edit',
+        icon: 'pi pi-fw pi-pencil',
         items: [
-          [
-            {
-              label: 'Marcas',
-              items: [
-                { label: 'Adidas' },
-                { label: 'Nike' },
-                { label: 'Puma' },
-              ],
-            },
-          ],
-          [
-            {
-              label: 'Esporte',
-              items: [
-                { label: 'Fotebol' },
-                { label: 'Basquete' },
-                { label: 'Outros' },
-              ],
-            },
-          ],
-          [
-            {
-              label: 'Especiais',
-              items: [
-                { label: 'Retro' },
-                { label: 'Special Edition' },
-                { label: 'New' },
-              ],
-            },
-          ],
-        ],
-      },
-      {
-        label: 'Todas Categorias',
-        icon: '1',
-        items: [
-          [
-            {
-              items: [
-                { label: 'Adidas' },
-                { label: 'Nike' },
-                { label: 'Puma' },
-              ],
-            },
-          ],
-          [
-            {
-              items: [
-                { label: 'Fotebol' },
-                { label: 'Basquete' },
-                { label: 'Outros' },
-              ],
-            },
-          ],
-          [
-            {
-              items: [
-                { label: 'Retro' },
-                { label: 'Special Edition' },
-                { label: 'New' },
-                { label: 'Outro' },
-                { label: 'Lancamentos' },
-              ],
-            },
-          ],
-          [
-            {
-              items: [
-                { label: 'Brasileiros' },
-                { label: 'Bundesleague' },
-                { label: 'Champions League' },
-                { label: 'Premiere' },
-                { label: 'Botafogo' },
-              ],
-            },
-          ],
+          { label: 'Delete', icon: 'pi pi-fw pi-trash' },
+          { label: 'Refresh', icon: 'pi pi-fw pi-refresh' },
         ],
       },
     ];
@@ -262,5 +218,71 @@ export class HomeComponent {
       });
     }
     console.log('click');
+  }
+  onCategorySelected(category: string): void {
+    this.router.navigate(['/search'], {
+      queryParams: { category },
+    });
+  }
+
+
+  increaseQuantity() {
+    this.quantity++;
+  }
+
+  decreaseQuantity() {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
+  }
+  increaseCart(product: any) {
+    console.log(product);
+    product.quantity++;
+    this.updateValue();
+  }
+  decreaseCart(product: any) {
+    product.quantity--;
+    this.updateValue();
+  }
+
+  updateValue() {
+    this.total = 0;
+    for (let i = 0; this.carrinho.length > i; i++) {
+      this.total += this.carrinho[i].price * this.carrinho[i].quantity;
+    }
+  }
+
+  deleteProduct(itemId: number) {
+    this.carrinho = this.carrinho.filter((item: any) => item.id !== itemId);
+
+    localStorage.setItem('carrinho', JSON.stringify(this.carrinho)); // Atualiza o localStorage
+  }
+
+  onSubmit() {
+    let message: string = '';
+    if (this.enderecoForm.valid) {
+      console.log('Itens selecionados: ');
+      for (let i = 0; this.carrinho.length > i; i++) {
+        let text = `${this.carrinho[i].quantity}X ${
+          this.carrinho[i].title
+        } \n Nome personalizado: ${
+          this.carrinho[i].custom_name
+        } \n Numero personalizado: ${
+          this.carrinho[i].custom_number
+        } \n PRICE: R$${this.carrinho[i].price * this.carrinho[i].quantity},00`;
+
+        message += text;
+      }
+      message += '\n \n TOTAL: R$' + this.total + ',00';
+      // console.log('TOTAL: R$' + this.total + ",00");
+      message += `\n \n Endereço: \n NOME: ${this.enderecoForm.value.nome} \n CPF: ${this.enderecoForm.value.cpf} \n CEP: ${this.enderecoForm.value.cep} \n Numero: ${this.enderecoForm.value.numeroCasa} \n CIDADE: ${this.enderecoForm.value.cidade}`;
+      console.log(this.enderecoForm.value.nome);
+      const url = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(
+        message
+      )}`;
+      window.open(url, '_blank');
+    } else {
+      console.log('Formulário inválido!');
+    }
   }
 }

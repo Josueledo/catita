@@ -185,6 +185,8 @@
   </div>
 
   <div class="content">
+    <p-toast position="top-center"></p-toast>
+
     <div class="card_left">
       <div class="image_main">
         <img src="{{ product.image1 }}" alt="" />
@@ -200,7 +202,6 @@
         <h1 class="title">{{ product.title }}</h1>
         <div class="status">
           <div class="circle"></div>
-          <span>Pronta entrega</span>
         </div>
         <div class="price_container">
           <div class="fullPrice">R${{ product.fullPrice }},00</div>
@@ -334,54 +335,8 @@
   </div>
 </div>
 } @loading {
-<div class="card">
-  <div class="grid formgrid">
-    <div class="field col-12 md:col-6">
-      <h5>Rectangle</h5>
-      <p-skeleton styleClass="mb-2"></p-skeleton>
-      <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
-      <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
-      <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
-      <p-skeleton width="10rem" height="4rem"></p-skeleton>
-    </div>
-    <div class="field col-12 md:col-6">
-      <h5>Rounded</h5>
-      <p-skeleton styleClass="mb-2" borderRadius="16px"></p-skeleton>
-      <p-skeleton
-        width="10rem"
-        styleClass="mb-2"
-        borderRadius="16px"
-      ></p-skeleton>
-      <p-skeleton
-        width="5rem"
-        styleClass="mb-2"
-        borderRadius="16px"
-      ></p-skeleton>
-      <p-skeleton
-        height="2rem"
-        styleClass="mb-2"
-        borderRadius="16px"
-      ></p-skeleton>
-      <p-skeleton width="10rem" height="4rem" borderRadius="16px"></p-skeleton>
-    </div>
-    <div class="field col-12 md:col-6">
-      <h5 class="mt-3">Square</h5>
-      <div class="flex align-items-end">
-        <p-skeleton size="2rem" styleClass="mr-2"></p-skeleton>
-        <p-skeleton size="3rem" styleClass="mr-2"></p-skeleton>
-        <p-skeleton size="4rem" styleClass="mr-2"></p-skeleton>
-        <p-skeleton size="5rem"></p-skeleton>
-      </div>
-    </div>
-    <div class="field col-12 md:col-6">
-      <h5 class="mt-3">Circle</h5>
-      <div class="flex align-items-end">
-        <p-skeleton shape="circle" size="2rem" styleClass="mr-2"></p-skeleton>
-        <p-skeleton shape="circle" size="3rem" styleClass="mr-2"></p-skeleton>
-        <p-skeleton shape="circle" size="4rem" styleClass="mr-2"></p-skeleton>
-        <p-skeleton shape="circle" size="5rem"></p-skeleton>
-      </div>
-    </div>
+  <div class="container">
+    <h1 class="loading">CATITA</h1>
   </div>
-</div>
 }
+

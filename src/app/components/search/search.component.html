@@ -33,7 +33,10 @@
     </div>
     <div class="categoria"></div>
   </div>
-  <h1 class="search_title">Search Results for "{{ searchTerm }}"</h1>
+  @if (searchTerm !== "") {
+
+    <h1 class="search_title">Search Results for "{{ searchTerm }}"</h1>
+  }
 
   <div *ngIf="filteredProducts.length; else noResults">
     <ul>

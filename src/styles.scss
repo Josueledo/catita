@@ -364,3 +364,18 @@ p-sidebar {
     color: $background !important;
   }
 }
+
+.p-toast-message-error{
+  background-color: rgb(201, 77, 77) !important;
+  color: white !important;
+}
+.p-toast-message-sucess{
+  background-color: rgb(100, 201, 77) !important;
+  color: white !important;
+}
+.p-button-text{
+  color: white !important;
+}
+.loading{
+  color: $gray;
+}

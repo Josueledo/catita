@@ -32,28 +32,46 @@ export class SearchComponent {
     displaySidebar = false
     faBagShopping = faBagShopping
   crudService = inject(CrudService);
-  constructor(private route: ActivatedRoute,private router: Router) {}
-
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute,private router: Router) {
     this.crudService.getItems().subscribe((data) => {
       this.products = data;
-      console.log(this.products);
+
       this.route.queryParams.subscribe((params) => {
         this.searchTerm = params['q'] || '';
-        this.filterProducts();
+        const category = params['category'] || '';
+
+        this.filterProducts(category);
       });
     });
   }
 
-  filterProducts(): void {
-    this.filteredProducts = this.products.filter((product: any) =>
-      product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  ngOnInit(): void {
+
   }
+
+
+  filterProducts(category: string = ''): void {
+    this.filteredProducts = this.products.filter((product: any) => {
+      const matchesCategory = category
+        ? product.categoria?.some((cat: string) =>
+            cat.toLowerCase() === category.toLowerCase())
+        : true;
+
+      const matchesSearchTerm = this.searchTerm
+        ? product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        : true;
+
+      return matchesCategory && matchesSearchTerm;
+    });
+  }
+
+
   onSearch(): void {
     if (this.searchTerm.trim()) {
-      this.router.navigate(['/search'], { queryParams: { q: this.searchTerm } });
+      this.router.navigate(['/search'], {
+        queryParams: { q: this.searchTerm },
+      });
     }
-    console.log("click")
   }
+
 }

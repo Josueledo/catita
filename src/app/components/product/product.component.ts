@@ -13,6 +13,7 @@ import {
 } from '@angular/forms'; // Importação necessária
 import { SkeletonModule } from 'primeng/skeleton';
 import { TabViewModule } from 'primeng/tabview';
+import {ToastModule} from 'primeng/toast';
 
 import {
   faPaperPlane,
@@ -27,6 +28,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { StepperModule } from 'primeng/stepper';
 import { FooterComponent } from '../footer/footer.component';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-product',
@@ -43,9 +45,11 @@ import { FooterComponent } from '../footer/footer.component';
     ReactiveFormsModule,
     StepperModule,
     FooterComponent,
+    ToastModule
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
+  providers:[MessageService]
 })
 export class ProductComponent {
   crudService = inject(CrudService);
@@ -72,10 +76,11 @@ export class ProductComponent {
   searchTerm: string = '';
 
   route = inject(ActivatedRoute);
+  messageService = inject(MessageService)
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
-    private fb: FormBuilder,private router: Router
+    private fb: FormBuilder,private router: Router,
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
@@ -180,7 +185,8 @@ export class ProductComponent {
 
   addOnCart(product: any) {
     if (this.selectedSize === '') {
-      alert('please select a size');
+      this.messageService.add({severity:'error', summary:'Error', detail:'Selecione um tamanho!',life:5000});
+
       return;
     }
     let item = {
@@ -210,6 +216,7 @@ export class ProductComponent {
     this.quantity = 1;
     this.selectedSize = '';
     this.updateValue();
+    this.messageService.add({severity:'success', summary:'Sucess', detail:'Produto adicionado'});
   }
 
   setItem(key: string, value: string): void {
