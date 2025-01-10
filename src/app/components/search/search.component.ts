@@ -37,10 +37,11 @@ export class SearchComponent {
       this.products = data;
 
       this.route.queryParams.subscribe((params) => {
-        this.searchTerm = params['q'] || '';
-        const category = params['category'] || '';
+        const categoriesParam = params['categories'] || '';
+        const searchTermParam = params['q'] || '';
+        const categories = categoriesParam ? categoriesParam.split(',') : [];
 
-        this.filterProducts(category);
+        this.filterProducts(categories, searchTermParam);
       });
     });
   }
@@ -50,20 +51,29 @@ export class SearchComponent {
   }
 
 
-  filterProducts(category: string = ''): void {
+  filterProducts(categories: string[] = [], searchTerm: string = ''): void {
     this.filteredProducts = this.products.filter((product: any) => {
-      const matchesCategory = category
-        ? product.categoria?.some((cat: string) =>
-            cat.toLowerCase() === category.toLowerCase())
+      // Verificar se as categorias coincidem exatamente
+      const matchesCategories = categories.length
+        ? this.arraysAreEqual(product.categoria || [], categories)
         : true;
 
-      const matchesSearchTerm = this.searchTerm
-        ? product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      // Verificar se o termo de busca coincide
+      const matchesSearchTerm = searchTerm
+        ? product.title.toLowerCase().includes(searchTerm.toLowerCase())
         : true;
 
-      return matchesCategory && matchesSearchTerm;
+      return matchesCategories && matchesSearchTerm;
     });
   }
+
+  // Função para verificar igualdade exata entre dois arrays
+  arraysAreEqual(arr1: string[], arr2: string[]): boolean {
+    if (arr1.length !== arr2.length) return false;
+    return arr1.sort().join(',') === arr2.sort().join(',');
+  }
+
+
 
 
   onSearch(): void {

@@ -159,14 +159,17 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
   .search_title{
     font-size: 1rem;
   }
   ul{
-    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
     padding: 40px 20px;
   }
