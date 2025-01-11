@@ -1,5 +1,7 @@
-import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
+import {  DecimalPipe, isPlatformBrowser } from '@angular/common';
 import { Component, Inject, inject, PLATFORM_ID } from '@angular/core';
+import { Carousel } from 'primeng/carousel';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faPaperPlane,
@@ -28,6 +30,7 @@ import {
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuItem } from 'primeng/api';
 import { TabPanel, TabViewModule } from 'primeng/tabview';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -43,8 +46,8 @@ import { TabPanel, TabViewModule } from 'primeng/tabview';
     FormsModule,
     PanelMenuModule,
     ReactiveFormsModule,
-    TabPanel,
     TabViewModule,
+    HeaderComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -89,6 +92,7 @@ export class HomeComponent {
   ];
 
   constructor(
+
     @Inject(PLATFORM_ID) private platformId: any,
     private router: Router,
     private fb: FormBuilder
@@ -108,17 +112,6 @@ export class HomeComponent {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  onSidebarHide(event: any) {
-    console.log('Sidebar fechada.');
-  }
-
-  closeSidebar() {
-    this.displaySidebar = false;
-    this.responsiveMenu = false;
-  }
-  nextTab() {
-    this.activeTabIndex = 1; // Muda para a aba de endereço
-  }
   ngOnInit() {
     console.log(this.getItem('carrinho'));
 
@@ -150,183 +143,7 @@ export class HomeComponent {
         numScroll: 1,
       },
     ];
-    this.items = [
-      {
-        label: 'Camisas de futebol',
-        items: [
-          {
-            label: 'Masculina',
-            items: [
-              {
-                label: 'Versao jogador',
-                items: [
-                  {
-                    label: 'Botafogo',
-                    command: () =>
-                      this.onCategorySelected([
-                        'Botafogo',
-                        'jogador',
-                        'masculino',
-                      ]),
-                  },
-                  {
-                    label: 'Flamengo',
-                    command: () =>
-                      this.onCategorySelected([
-                        'flamengo',
-                        'jogador',
-                        'masculino',
-                      ]),
-                  },
-                  {
-                    label: 'Corinthians',
-                    command: () =>
-                      this.onCategorySelected([
-                        'corinthians',
-                        'jogador',
-                        'masculino',
-                      ]),
-                  },
-                ],
-              },
-              {
-                label: 'Versão de Torcedo',
-                items: [{ label: 'Corinthians' }, { label: 'Palmeiras' }],
-              },
-              {
-                label: 'Retrô',
-                items: [{ label: 'Corinthians' }, { label: 'Palmeiras' }],
-              },
-            ],
-          },
-          {
-            label: 'Feminina',
-            items: [
-              {
-                label: 'Versao jogador',
-                items: [
-                  {
-                    label: 'Botafogo',
-                    command: () =>
-                      this.onCategorySelected([
-                        'Botafogo',
-                        'jogador',
-                        'feminina',
-                      ]),
-                  },
-                  {
-                    label: 'Flamengo',
-                    command: () =>
-                      this.onCategorySelected([
-                        'flamengo',
-                        'jogador',
-                        'feminina',
-                      ]),
-                  },
-                  {
-                    label: 'Corinthians',
-                    command: () =>
-                      this.onCategorySelected([
-                        'corinthians',
-                        'jogador',
-                        'feminina',
-                      ]),
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        label: 'Conjunto infantil',
-        items: [
-          {
-            label: 'Botafogo',
-            command: () =>
-              this.onCategorySelected(['Botafogo', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Flamengo',
-            command: () =>
-              this.onCategorySelected(['flamengo', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Corinthians',
-            command: () =>
-              this.onCategorySelected(['corinthians', 'jogador', 'feminina']),
-          },
-        ],
-      },
-      {
-        label: 'Camisas de basquete',
-        items: [
-          {
-            label: 'Lebrom Jeimes',
-            command: () =>
-              this.onCategorySelected(['Botafogo', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Vlancleriston',
-            command: () =>
-              this.onCategorySelected(['flamengo', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Caça rato',
-            command: () =>
-              this.onCategorySelected(['corinthians', 'jogador', 'feminina']),
-          },
-        ],
-      },
-      {
-        label: 'Camisas da NFL',
-        items: [
-          {
-            label: 'ABC',
-            command: () =>
-              this.onCategorySelected(['Botafogo', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Ponte preta',
-            command: () =>
-              this.onCategorySelected(['flamengo', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Jucentude',
-            command: () =>
-              this.onCategorySelected(['corinthians', 'jogador', 'feminina']),
-          },
-        ],
-      },
-      {
-        label: 'Envio imediato',
-      },
-      {
-        label: 'Outros',
-        items: [
-          {
-            label: 'Shorts de futebol',
-            command: () =>
-              this.onCategorySelected(['Botafogo', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Shorts de basquete',
-            command: () =>
-              this.onCategorySelected(['flamengo', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Corta-vento',
-            command: () =>
-              this.onCategorySelected(['corinthians', 'jogador', 'feminina']),
-          },
-          {
-            label: 'Conjunto de treino',
-            command: () =>
-              this.onCategorySelected(['corinthians', 'jogador', 'feminina']),
-          },
-        ],
-      },
-    ];
+
   }
 
   hover(product: any) {}
@@ -357,69 +174,5 @@ export class HomeComponent {
     }
     console.log('click');
   }
-  onCategorySelected(categories: string[]): void {
-    this.router.navigate(['/search'], {
-      queryParams: { categories: categories.join(',') },
-    });
-  }
 
-  increaseQuantity() {
-    this.quantity++;
-  }
-
-  decreaseQuantity() {
-    if (this.quantity > 1) {
-      this.quantity--;
-    }
-  }
-  increaseCart(product: any) {
-    console.log(product);
-    product.quantity++;
-    this.updateValue();
-  }
-  decreaseCart(product: any) {
-    product.quantity--;
-    this.updateValue();
-  }
-
-  updateValue() {
-    this.total = 0;
-    for (let i = 0; this.carrinho.length > i; i++) {
-      this.total += this.carrinho[i].price * this.carrinho[i].quantity;
-    }
-  }
-
-  deleteProduct(itemId: number) {
-    this.carrinho = this.carrinho.filter((item: any) => item.id !== itemId);
-
-    localStorage.setItem('carrinho', JSON.stringify(this.carrinho)); // Atualiza o localStorage
-  }
-
-  onSubmit() {
-    let message: string = '';
-    if (this.enderecoForm.valid) {
-      console.log('Itens selecionados: ');
-      for (let i = 0; this.carrinho.length > i; i++) {
-        let text = `${this.carrinho[i].quantity}X ${
-          this.carrinho[i].title
-        } \n Nome personalizado: ${
-          this.carrinho[i].custom_name
-        } \n Numero personalizado: ${
-          this.carrinho[i].custom_number
-        } \n PRICE: R$${this.carrinho[i].price * this.carrinho[i].quantity},00`;
-
-        message += text;
-      }
-      message += '\n \n TOTAL: R$' + this.total + ',00';
-      // console.log('TOTAL: R$' + this.total + ",00");
-      message += `\n \n Endereço: \n NOME: ${this.enderecoForm.value.nome} \n CPF: ${this.enderecoForm.value.cpf} \n CEP: ${this.enderecoForm.value.cep} \n Numero: ${this.enderecoForm.value.numeroCasa} \n CIDADE: ${this.enderecoForm.value.cidade}`;
-      console.log(this.enderecoForm.value.nome);
-      const url = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(
-        message
-      )}`;
-      window.open(url, '_blank');
-    } else {
-      console.log('Formulário inválido!');
-    }
-  }
 }

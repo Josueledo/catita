@@ -3,7 +3,7 @@
   max-width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background-color: $gray;
+  background-color: $backgroundGray;
   .header_container {
     width: 100%;
     .top_header {
@@ -93,7 +93,7 @@
 
   .content {
     display: flex;
-    padding: 40px 90px;
+    padding: 90px 90px;
     align-items: start;
     justify-content: center;
     flex-direction: row-reverse;
@@ -125,6 +125,7 @@
         height: 100%;
         flex-direction: row;
         display: flex;
+        flex-wrap: wrap;
         align-items: start;
         gap: 40px;
         justify-content: space-between;
@@ -198,7 +199,8 @@
           gap: 10px;
           .selected-size {
             border: 1px solid $primary;
-            color: $primary;
+            color: $white;
+            background-color: $primary;
           }
           li {
             margin-top: 10px;
@@ -294,7 +296,8 @@
           gap: 10px;
           .selected-size {
             border: 1px solid $primary;
-            color: $primary;
+            color: $white;
+            background-color: $primary;
           }
           li {
             margin-top: 10px;
@@ -371,60 +374,6 @@
     }
   }
 
-  .footer {
-    width: 100%;
-    height: 400px;
-    background-color: $background;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    .social {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      margin-bottom: 30px;
-      .icon {
-        width: 50px;
-        height: 50px;
-        background-color: $primary;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $white;
-      }
-    }
-    .menu_footer {
-      color: $white;
-      ul {
-        display: flex;
-        list-style: none;
-        gap: 30px;
-      }
-    }
-    .sub {
-      ul {
-        display: flex;
-        list-style: none;
-        gap: 30px;
-        align-items: center;
-        justify-content: center;
-        .line {
-          height: 20px;
-          width: 1px;
-          background-color: gray;
-        }
-        li {
-          color: gray;
-        }
-      }
-    }
-  }
-
   .whatsapp {
     position: fixed;
     right: 0;
@@ -436,7 +385,7 @@
     }
   }
 }
-@media (width <= 950px) {
+@media (width <= 1080px) {
   .container {
     .header_container{
       .header{
@@ -494,6 +443,7 @@
   .container {
     .content {
       padding: 20px 40px;
+      padding-bottom: 90px;
     }
   }
 }
@@ -502,9 +452,8 @@
     .content {
       .card_left {
         .image_container {
-          img {
-            max-width: 20%;
-          }
+          gap: 10px;
+
         }
       }
       .responsive{

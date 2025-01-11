@@ -1,33 +1,27 @@
 <div class="footer">
   <div class="social">
+    <a href="https://www.instagram.com/lacatitasports/">
     <div class="icon">
-      <fa-icon [icon]="faCartShopping"></fa-icon>
+      <img src="instagram.png" alt="">
+      <span>LaCatita</span>
     </div>
-    <div class="icon">
-      <fa-icon [icon]="faCartShopping"></fa-icon>
-    </div>
-    <div class="icon">
-      <fa-icon [icon]="faCartShopping"></fa-icon>
-    </div>
-    <div class="icon">
-      <fa-icon [icon]="faCartShopping"></fa-icon>
-    </div>
+  </a>
+
   </div>
   <div class="infos">
     <div class="menu_footer">
       <ul>
-        <li>HOME</li>
-        <li>MENU</li>
-        <li>CATALOGO</li>
-        <li>OTHER</li>
-        <li>CONTACT</li>
+        <li><a (click)="navigateToSection('carrosel')">Home</a></li>
+        <li><a (click)="navigateToSection('products1')">Mais vendidos</a></li>
+        <li><a (click)="navigateToSection('menu')">Catálogo</a></li>
+        <li><a (click)="navigateToSection('products2')">Lançamentos</a></li>
       </ul>
     </div>
     <div class="sub">
       <ul>
         <li>CONTACT</li>
         <div class="line"></div>
-        <li>BLOG</li>
+        <li>FEEDBACK</li>
         <div class="line"></div>
         <li>CATERING</li>
       </ul>

@@ -13,9 +13,14 @@ import {
   faBars,
   faBagShopping
 } from '@fortawesome/free-solid-svg-icons';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { TabPanel, TabViewModule } from 'primeng/tabview';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-search',
-  imports: [ CommonModule,RouterLink,FontAwesomeModule,FormsModule],
+  imports: [ CommonModule,RouterLink,FontAwesomeModule,FormsModule,PanelMenuModule,
+      TabViewModule,HeaderComponent,FooterComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })
@@ -29,6 +34,8 @@ export class SearchComponent {
     faQuoteLeft = faQuoteLeft;
     faStar = faStar;
     faBars = faBars;
+    responsiveMenu = false;
+
     displaySidebar = false
     faBagShopping = faBagShopping
   crudService = inject(CrudService);

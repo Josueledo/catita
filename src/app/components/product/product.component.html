@@ -1,200 +1,22 @@
 @defer {
 <div class="container">
-  <p-sidebar
-    [(visible)]="displaySidebar"
-    position="right"
-    [baseZIndex]="1000"
-    (onHide)="onSidebarHide($event)"
-  >
-    <p-tabView
-      [(activeIndex)]="activeTabIndex"
-      (click)="$event.stopPropagation()"
-    >
-      <p-tabPanel (click)="$event.stopPropagation()">
-        <ng-template pTemplate="header">
-          <span class="numberIcon">1</span>
-          <span>Carrinho</span>
-        </ng-template>
-        <ng-template
-          #content
-          let-activateCallback="activateCallback"
-          (click)="$event.stopPropagation()"
-        >
-          <div class="null" (click)="$event.stopPropagation()">
-            <!-- Conteúdo do Carrinho -->
-            <div class="null" (click)="$event.stopPropagation()">
-              @if (carrinho.length === 0) {
-              <span>Nada no carrinho...</span>
-              } @for (product of carrinho; track $index) {
-              <div class="item">
-                <div class="image">
-                  <img src="{{ product.image1 }}" alt="" />
-                </div>
-                <div class="content">
-                  <div class="title">
-                    <h3>{{ product.title }}</h3>
-                    <button (click)="deleteProduct(product.id)">X</button>
-                  </div>
-                  <div class="size">
-                    <span>Tamanho: {{ product.size }}</span>
-                    @if (product.custom_name !== "") {
-                    <span>Nome: {{ product.custom_name }}</span>
-                    } @if (product.custom_number !== "") {
-                    <span>Numero: {{ product.custom_number }}</span>
-                    }
-                  </div>
-                  <div class="total">
-                    <div class="qtd_container">
-                      <button class="menos" (click)="decreaseCart(product)">
-                        -
-                      </button>
-                      <button class="qtd">{{ product.quantity }}</button>
-                      <button class="mais" (click)="increaseCart(product)">
-                        +
-                      </button>
-                    </div>
-                    <span>R${{ product.price * product.quantity }},00</span>
-                  </div>
-                </div>
-              </div>
-              }
-            </div>
-          </div>
-          <div class="footer">
-            <div class="total">total: R${{ total }},00</div>
-            <button class="finish" (click)="nextTab()">NEXT</button>
-          </div>
-        </ng-template>
-      </p-tabPanel>
-
-      <p-tabPanel>
-        <ng-template pTemplate="header">
-          <span class="numberIcon">2</span>
-          <span>Endereço</span>
-        </ng-template>
-        <ng-template #content let-activateCallback="activateCallback">
-          <div class="flex flex-col h-48">
-            <div>
-              <form
-                [formGroup]="enderecoForm"
-                (ngSubmit)="onSubmit()"
-                class="form-container"
-              >
-                <div class="form-group">
-                  <label for="nome">Nome:</label>
-                  <input
-                    id="nome"
-                    formControlName="nome"
-                    type="text"
-                    class="form-control"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="cpf">CPF:</label>
-                  <input
-                    id="cpf"
-                    formControlName="cpf"
-                    type="text"
-                    class="form-control"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="cep">CEP:</label>
-                  <input
-                    id="cep"
-                    formControlName="cep"
-                    type="text"
-                    class="form-control"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="numero">Número:</label>
-                  <input
-                    id="numero"
-                    formControlName="numero"
-                    type="text"
-                    class="form-control"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="numeroCasa">Número da Casa:</label>
-                  <input
-                    id="numeroCasa"
-                    formControlName="numeroCasa"
-                    type="text"
-                    class="form-control"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="cidade">Cidade:</label>
-                  <input
-                    id="cidade"
-                    formControlName="cidade"
-                    type="text"
-                    class="form-control"
-                  />
-                </div>
-
-                <button type="submit" class="btn-submit">Enviar</button>
-              </form>
-            </div>
-          </div>
-        </ng-template>
-      </p-tabPanel>
-    </p-tabView>
-  </p-sidebar>
-
-  <div class="header_container">
-    <div class="top_header">
-      <fa-icon [icon]="faPaperPlane"></fa-icon>
-      <h1>COMPRE 3 LEVE 4 CAMISETAS!</h1>
-    </div>
-    <div class="header_mobile">
-      <div class="logo" routerLink="/">
-        <img src="./logo.png" alt="" />
-      </div>
-      <div class="cart_icon" (click)="displaySidebar = true" >
-        <fa-icon [icon]="faBagShopping"></fa-icon>
-        <fa-icon [icon]="faBars" class="bars"></fa-icon>
-      </div>
-
-
-    </div>
-    <div class="header">
-      <div class="logo" routerLink="">
-        <img src="./logo.png" alt="" />
-      </div>
-      <div class="input">
-        <input type="text" placeholder="Buscar produto..." [(ngModel)]="searchTerm"
-        />
-        <button (click)="onSearch()">
-          <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
-        </button>
-      </div>
-
-      <div class="cart_icon" (click)="displaySidebar = true" >
-        <fa-icon [icon]="faBagShopping"></fa-icon>
-      </div>
-    </div>
-    <div class="categoria"></div>
-  </div>
+  <app-header></app-header>
 
   <div class="content">
     <p-toast position="top-center"></p-toast>
 
     <div class="card_left">
       <div class="image_main">
-        <img src="{{ product.image1 }}" alt="" />
+        <img [src]="selectedImage" alt="Produto principal" />
       </div>
       <div class="image_container">
-        <img src="{{ product.image2 }}" alt="" />
-        <img src="{{ product.image3 }}" alt="" />
-        <img src="{{ product.image4 }}" alt="" />
+        <img
+          *ngFor="let image of secondaryImages"
+          [src]="image"
+          alt="Imagem do produto"
+          (click)="updateMainImage(image)"
+          [class.active]="image === selectedImage"
+        />
       </div>
     </div>
     <div class="card_right">
@@ -320,9 +142,7 @@
             <button class="valor">{{ quantity }}</button>
             <button class="mais" (click)="increaseQuantity()">+</button>
           </div>
-          <button class="comprar" (click)="addOnCart(product)">
-            COMPRAR
-          </button>
+          <button class="comprar" (click)="addOnCart(product)">COMPRAR</button>
         </div>
       </div>
     </div>
@@ -330,13 +150,10 @@
 
   <app-footer></app-footer>
 
-  <div class="whatsapp">
-    <img src="./whatsapp.png" alt="" />
-  </div>
+
 </div>
 } @loading {
-  <div class="container">
-    <h1 class="loading">CATITA</h1>
-  </div>
+<div class="container">
+  <h1 class="loading">CATITA</h1>
+</div>
 }
-

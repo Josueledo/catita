@@ -1,38 +1,6 @@
+@defer {
 <div class="container">
-  <div class="header_container">
-    <div class="top_header">
-      <fa-icon [icon]="faPaperPlane"></fa-icon>
-      <h1>COMPRE 3 LEVE 4 CAMISETAS!</h1>
-    </div>
-    <div class="header_mobile">
-      <div class="logo">
-        <img src="./logo.png" alt="" />
-      </div>
-      <div class="cart_icon" (click)="displaySidebar = true" >
-        <fa-icon [icon]="faBagShopping"></fa-icon>
-        <fa-icon [icon]="faBars" class="bars"></fa-icon>
-      </div>
-
-
-    </div>
-    <div class="header">
-      <div class="logo" routerLink="">
-        <img src="./logo.png" alt="" />
-      </div>
-      <div class="input">
-        <input type="text" placeholder="Buscar produto..." [(ngModel)]="searchTerm"
-        />
-        <button (click)="onSearch()">
-          <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
-        </button>
-      </div>
-
-      <div class="cart_icon" (click)="displaySidebar = true" >
-        <fa-icon [icon]="faBagShopping"></fa-icon>
-      </div>
-    </div>
-    <div class="categoria"></div>
-  </div>
+ <app-header></app-header>
   @if (searchTerm !== "") {
 
     <h1 class="search_title">Search Results for "{{ searchTerm }}"</h1>
@@ -78,3 +46,10 @@
     <p>No products found!</p>
   </ng-template>
 </div>
+<app-footer></app-footer>
+}
+@loading {
+  <div class="container">
+    <h1 class="loading">CATITA</h1>
+  </div>
+  }

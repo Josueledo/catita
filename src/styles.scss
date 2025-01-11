@@ -11,12 +11,14 @@ $primary: #c6b22a;
 $primaryFont: #d2c252;
 $gray: rgb(46, 46, 46);
 $background: #161616;
-$backgroundGray: #272727;
+$backgroundGray: #1c1c1c;
 $desconto: #03b37b;
 $whiteGray: rgb(190, 190, 190);
 
 p-carousel {
   width: 90%;
+  touch-action: pan-y !important; /* Garante que os filhos respeitem o scroll vertical */
+
   .p-carousel-content-container {
     .p-carousel-content {
       gap: 0;
@@ -45,6 +47,7 @@ p-carousel {
     }
   }
 }
+
 
 .p-carousel-viewport {
   overflow: hidden;
@@ -130,7 +133,7 @@ p-tabview {
     justify-content: end;
     border-bottom: 1px solid $whiteGray;
     &::after {
-      content: "CATITA";
+      content: "Quase lá...";
       position: absolute;
       left: 20px;
       color: $gray;
@@ -160,124 +163,7 @@ button {
   border-radius: 5px;
 }
 
-.null {
-  color: gray;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  overflow-y: scroll;
-  gap: 20px;
-  height: 90%;
-  flex-direction: column;
-  span {
-    padding: 10px 25px;
-    width: 100%;
-    text-align: center;
-    border: 1px solid $whiteGray !important;
-    color: gray;
-    font-size: 0.8rem;
-  }
-  .item {
-    min-height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-    .image {
-      height: 100%;
-      img {
-        max-width: 100px;
-        border-radius: 10px;
-      }
-    }
-    .content {
-      width: 100%;
-      height: 90%;
-      padding: 0 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      justify-content: space-between;
-      span {
-        width: 100%;
-        border: none !important;
-        color: gray;
-        font-size: 0.8rem;
-      }
-      .title {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        button {
-          width: 20px;
-          height: 20px;
-          background-color: transparent;
-          color: rgb(234, 126, 126);
-          border: none;
-        }
-        h3 {
-          font-size: 1rem;
-          font-weight: 400;
-          line-height: 18px;
-        }
-      }
-      .size {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: start;
-        span {
-          display: flex;
-          padding: 0 !important;
-          font-weight: 700;
-        }
-      }
-      .total {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .qtd_container {
-          width: 100%;
-          button {
-            width: 25px;
-            height: 25px;
-            background-color: transparent;
-            border: 1px solid $whiteGray;
-            color: gray;
-            &.qtd {
-              width: 20px;
-            }
-          }
-        }
-        span {
-          padding: 0;
-          color: $gray;
-          font-weight: 700;
-          font-size: 0.9rem;
-        }
-      }
-    }
-  }
-}
-p-sidebar {
-}
-.finish {
-  background-color: $primary;
-  border: none;
-  padding: 10px;
-  left: calc(50% - 40%);
-  // position: absolute;
-  bottom: 0;
-  width: 100%;
-  // margin-bottom: 30px;
-}
-.total {
-  color: gray;
-}
+
 .p-tablist-active-bar {
   z-index: 1;
   display: block;
@@ -397,8 +283,15 @@ p-sidebar {
   flex: 0 0 calc(30% - 10px);
 
 }
+.p-panelmenu-item:not(.p-disabled) > .p-panelmenu-item-content:hover {
+  background: rgb(226, 226, 226) !important;
+  color: var(--p-panelmenu-item-focus-color);
+}
+
+
 
 @media (width <= 800px) {
+
   .p-panelmenu-panel {
     // max-width: 400px;
     // min-width: 250px;

@@ -29,6 +29,8 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { StepperModule } from 'primeng/stepper';
 import { FooterComponent } from '../footer/footer.component';
 import { MessageService } from 'primeng/api';
+import { HeaderComponent } from '../header/header.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -37,7 +39,6 @@ import { MessageService } from 'primeng/api';
     CarouselModule,
     ButtonModule,
     CommonModule,
-    RouterLink,
     SidebarModule,
     FormsModule,
     SkeletonModule,
@@ -45,7 +46,8 @@ import { MessageService } from 'primeng/api';
     ReactiveFormsModule,
     StepperModule,
     FooterComponent,
-    ToastModule
+    ToastModule,
+    HeaderComponent,
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
@@ -74,9 +76,12 @@ export class ProductComponent {
   displaySidebar = false
   faBagShopping = faBagShopping
   searchTerm: string = '';
-
+  selectedImage!: string;
+  cartService = inject(CartService)
   route = inject(ActivatedRoute);
   messageService = inject(MessageService)
+
+  secondaryImages!: string[]
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
@@ -92,6 +97,15 @@ export class ProductComponent {
       numeroCasa: ['', Validators.required],
       cidade: ['', Validators.required],
     });
+    this.crudService.getItems().subscribe((data) => {
+      for (let i = 0; data.length > i; i++) {
+        if (data[i].id === this.route.snapshot.paramMap.get('id')) {
+          this.product = data[i];
+          this.selectedImage = this.product.image1
+          this.secondaryImages = [this.product.image1,this.product.image2,this.product.image3,this.product.image4,]
+        }
+      }
+    });
   }
 
   ngOnInit() {
@@ -99,15 +113,11 @@ export class ProductComponent {
       ? JSON.parse(this.getItem('carrinho')!)
       : [];
     console.log(this.carrinho);
-    this.updateValue();
 
-    this.crudService.getItems().subscribe((data) => {
-      for (let i = 0; data.length > i; i++) {
-        if (data[i].id === this.route.snapshot.paramMap.get('id')) {
-          this.product = data[i];
-        }
-      }
-    });
+
+  }
+  updateMainImage(image: string): void {
+    this.selectedImage = image;
   }
   onSubmit() {
     let message: string = '';
@@ -137,15 +147,6 @@ export class ProductComponent {
     }
   }
 
-  nextTab() {
-    this.activeTabIndex = 1; // Muda para a aba de endereço
-  }
-  onSidebarHide(event: any) {
-  }
-
-  closeSidebar() {
-    this.displaySidebar = false;
-  }
 
   selectSize(size: string) {
     this.selectedSize = size;
@@ -160,39 +161,20 @@ export class ProductComponent {
       this.quantity--;
     }
   }
-  increaseCart(product: any) {
-    console.log(product);
-    product.quantity++;
-    this.updateValue();
-  }
-  decreaseCart(product: any) {
-    product.quantity--;
-    this.updateValue();
-  }
-
-  updateValue() {
-    this.total = 0;
-    for (let i = 0; this.carrinho.length > i; i++) {
-      this.total += this.carrinho[i].price * this.carrinho[i].quantity;
-    }
-  }
-
-  deleteProduct(itemId: number) {
-    this.carrinho = this.carrinho.filter((item: any) => item.id !== itemId);
-
-    localStorage.setItem('carrinho', JSON.stringify(this.carrinho)); // Atualiza o localStorage
-  }
-
   addOnCart(product: any) {
     if (this.selectedSize === '') {
-      this.messageService.add({severity:'error', summary:'Error', detail:'Selecione um tamanho!',life:5000});
-
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Selecione um tamanho!',
+        life: 5000,
+      });
       return;
     }
+
     let item = {
       image1: product.image1,
       productId: product.id,
-      id: this.carrinho.length,
       title: product.title,
       custom_name: this.customName,
       custom_number: this.customNumber,
@@ -201,22 +183,21 @@ export class ProductComponent {
       price: product.price,
     };
 
-    if (item.custom_name !== '') {
-      item.price += 30;
-    }
-    if (item.custom_number !== '') {
-      item.price += 30;
-    }
-    this.carrinho.push(item);
+    if (item.custom_name !== '') item.price += 30;
+    if (item.custom_number !== '') item.price += 30;
 
-    this.setItem('carrinho', JSON.stringify(this.carrinho));
+    this.cartService.addToCart(item); // Adiciona ao carrinho via serviço
 
     this.customName = '';
     this.customNumber = '';
     this.quantity = 1;
     this.selectedSize = '';
-    this.updateValue();
-    this.messageService.add({severity:'success', summary:'Sucess', detail:'Produto adicionado'});
+
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Sucesso',
+      detail: 'Produto adicionado ao carrinho!',
+    });
   }
 
   setItem(key: string, value: string): void {
