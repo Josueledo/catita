@@ -24,20 +24,20 @@
   </div>
   <div class="info">
     <div class="card">
-      <fa-icon [icon]="faCartShopping"></fa-icon>
-      <span>Free Delivery</span>
+      <fa-icon [icon]="faTrophy"></fa-icon>
+      <span>Produtos de Qualidade</span>
     </div>
     <div class="card">
-      <fa-icon [icon]="faCartShopping"></fa-icon>
-      <span>Free Support</span>
+      <fa-icon [icon]="faLock"></fa-icon>
+      <span>Pagamento Seguro</span>
     </div>
     <div class="card">
-      <fa-icon [icon]="faCartShopping"></fa-icon>
-      <span>Get Vouvher</span>
+      <fa-icon [icon]="faTag"></fa-icon>
+      <span>Descontos Exclusivos</span>
     </div>
     <div class="card">
-      <fa-icon [icon]="faCartShopping"></fa-icon>
-      <span>Free Delivery</span>
+      <fa-icon [icon]="faPalette"></fa-icon>
+      <span>Atendimento Personalizado</span>
     </div>
   </div>
 
@@ -153,69 +153,50 @@
     <div class="card1"></div>
    <div class="card4"></div>
   </div>
-  <div class="feedback" id="feedback">
-    <div class="title">
-      <h1>What our Clients say!</h1>
-      <div class="line"></div>
-    </div>
-
-    <div class="card_container">
-      <div class="card">
-        <div class="icon">
-          <fa-icon [icon]="faQuoteLeft"></fa-icon>
-        </div>
-        <span
-          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
-          nemo beatae optio molestias exercitation</span
-        >
-        <div class="image"></div>
-        <div class="name">CURURU</div>
-        <div class="stars">
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-        </div>
-      </div>
-      <div class="card">
-        <div class="icon">
-          <fa-icon [icon]="faQuoteLeft"></fa-icon>
-        </div>
-        <span
-          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
-          nemo beatae optio molestias exercitation</span
-        >
-        <div class="image"></div>
-        <div class="name">CURURU</div>
-        <div class="stars">
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-        </div>
-      </div>
-      <div class="card">
-        <div class="icon">
-          <fa-icon [icon]="faQuoteLeft"></fa-icon>
-        </div>
-        <span
-          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
-          nemo beatae optio molestias exercitation</span
-        >
-        <div class="image"></div>
-        <div class="name">CURURU</div>
-        <div class="stars">
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-        </div>
-      </div>
-    </div>
+  <div class="title">
+    <h1>What our Clients say!</h1>
+    <div class="line"></div>
   </div>
+  <p-carousel
+  [value]="feedbacks"
+  styleClass="custom-carousel"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+  [style]="{ 'touch-action': 'pan-y' }"
+  [responsiveOptions]="responsiveOptions"
+>
+  <ng-template let-feedback pTemplate="item">
+    <div class="feedback" id="feedback">
+      <div class="card_container">
+        <div class="card">
+          <div class="image">
+            <img src={{feedback.image}} alt="">
+          </div>
+          <div class="border"></div>
+          <div class="top_container">
+          <div class="stars">
+            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon [icon]="faStar"></fa-icon>
+          </div>
+          <div class="name">{{feedback.name}}</div>
+          <div class="cargo">Cliente</div>
+          <div class="icon">
+            <fa-icon [icon]="faQuoteLeft"></fa-icon>
+          </div>
+        </div>
+          <span class="text_container"
+            >{{feedback.text}}</span>
+
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>
+
 
   <app-footer></app-footer>
 

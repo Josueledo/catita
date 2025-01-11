@@ -79,6 +79,8 @@
       .cart_icon {
         color: $white;
         font-size: 1.5rem;
+        position: relative;
+
         .bars {
           display: none;
         }
@@ -197,6 +199,20 @@
     }
   }
 }
+
+.quantidade{
+  background-color: rgb(241, 62, 62);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: .8rem;
+  left: 10px;
+  top: 17px;
+}
 button:disabled {
   background-color: #ccc; /* Cor de fundo do botão desabilitado */
   color: #888; /* Cor do texto quando desabilitado */
@@ -272,6 +288,7 @@ small{
           justify-content: center;
           font-size: 1.3rem;
           gap: 40px;
+          position: relative;
         }
       }
       .categoria {

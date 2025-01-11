@@ -86,10 +86,10 @@ export class HeaderComponent {
         label: 'Camisas de futebol',
         items: [
           {
-            label: 'Masculina',
+            label: 'Masculinas',
             items: [
               {
-                label: 'Versao jogador',
+                label: 'Versão jogador',
                 items: [
                   { label: 'Alemanha', items: [] },
                   { label: 'Argentina', items: [] },
@@ -132,11 +132,15 @@ export class HeaderComponent {
                 ],
               },
               {
-                label: 'Versão de Torcedo',
+                label: 'Versão de Torcedor',
                 items: [{ label: 'Corinthians' }, { label: 'Palmeiras' }],
               },
               {
                 label: 'Retrô',
+                items: [{ label: 'Corinthians' }, { label: 'Palmeiras' }],
+              },
+              {
+                label: 'Seleções',
                 items: [{ label: 'Corinthians' }, { label: 'Palmeiras' }],
               },
             ],
@@ -247,22 +251,22 @@ export class HeaderComponent {
         label: 'Outros',
         items: [
           {
-            label: 'Shorts de futebol',
+            label: 'Corta-Vento',
             command: () =>
               this.onCategorySelected(['Botafogo', 'jogador', 'feminina']),
           },
           {
-            label: 'Shorts de basquete',
+            label: 'Shorts de futebol',
             command: () =>
               this.onCategorySelected(['flamengo', 'jogador', 'feminina']),
           },
           {
-            label: 'Corta-vento',
+            label: 'Meias',
             command: () =>
               this.onCategorySelected(['corinthians', 'jogador', 'feminina']),
           },
           {
-            label: 'Conjunto de treino',
+            label: 'Kit de treino',
             command: () =>
               this.onCategorySelected(['corinthians', 'jogador', 'feminina']),
           },

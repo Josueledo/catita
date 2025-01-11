@@ -91,6 +91,10 @@
     }
     .infos{
       display: flex;
+      gap: 50px;
+      li{
+        list-style: square;
+      }
     }
     .menu_footer {
       color: $white;

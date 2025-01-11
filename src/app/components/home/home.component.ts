@@ -1,4 +1,4 @@
-import {  DecimalPipe, isPlatformBrowser } from '@angular/common';
+import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
 import { Component, Inject, inject, PLATFORM_ID } from '@angular/core';
 import { Carousel } from 'primeng/carousel';
 
@@ -11,6 +11,11 @@ import {
   faStar,
   faBars,
   faBagShopping,
+  faGift,
+  faTag,
+  faPalette,
+  faTrophy,
+  faLock
 } from '@fortawesome/free-solid-svg-icons';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
@@ -48,6 +53,7 @@ import { HeaderComponent } from '../header/header.component';
     ReactiveFormsModule,
     TabViewModule,
     HeaderComponent,
+    CommonModule
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -61,8 +67,12 @@ export class HomeComponent {
   faBars = faBars;
   responsiveMenu = false;
   displaySidebar = false;
+  faTrophy = faTrophy
   faBagShopping = faBagShopping;
-  carrinho: any = [];
+  faGift =faGift
+  faPalette = faPalette
+  faTag = faTag
+  faLock = faLock
   searchTerm: string = '';
   items!: MenuItem[];
   total: number = 0;
@@ -79,6 +89,25 @@ export class HomeComponent {
   responsiveOptions: any[] | undefined;
 
   products: any = [];
+  feedbacks: any = [
+    {
+      text: 'Eu fiquei extremamente satisfeita com minha experiência na loja. […] A qualidade é excelente, os detalhes são perfeitos, por isso já estou na minha quarta compra na loja.',
+      image:'pessoa1.jpg',
+      name:'Danielle Fernandes'
+    },
+    {
+      text: 'Atendimento impecável. Só tenho elogios.',
+      image:'pessoa2.jpg',
+      name:'Lyvia Passos'
+
+    },
+    {
+      text: 'Minha experiência com a loja foi ótima! Além de um atendimento atencioso e eficiente, a camisa superou minhas expectativas, tanto pela beleza quanto pelo acabamento.',
+      image:'pessoa3.jpg',
+      name:'Ana Carolina'
+
+    },
+  ];
   firebaseItems: any = [];
   images = [
     {
@@ -92,7 +121,6 @@ export class HomeComponent {
   ];
 
   constructor(
-
     @Inject(PLATFORM_ID) private platformId: any,
     private router: Router,
     private fb: FormBuilder
@@ -113,14 +141,6 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    console.log(this.getItem('carrinho'));
-
-    this.carrinho = this.getItem('carrinho')
-      ? JSON.parse(this.getItem('carrinho')!)
-      : [];
-
-    console.log(this.carrinho);
-
     this.responsiveOptions = [
       {
         breakpoint: '1400px',
@@ -143,7 +163,6 @@ export class HomeComponent {
         numScroll: 1,
       },
     ];
-
   }
 
   hover(product: any) {}
@@ -152,20 +171,6 @@ export class HomeComponent {
     return product.id; // Identificador único
   }
 
-  setItem(key: string, value: string): void {
-    if (this.isBrowser) {
-      localStorage.setItem(key, value);
-      console.log(localStorage.getItem('carrinho'));
-    }
-  }
-  getItem(key: string): string | null {
-    return this.isBrowser ? localStorage.getItem(key) : null;
-  }
-  removeItem(key: string): void {
-    if (this.isBrowser) {
-      localStorage.removeItem(key);
-    }
-  }
   onSearch(): void {
     if (this.searchTerm.trim()) {
       this.router.navigate(['/search'], {
@@ -174,5 +179,4 @@ export class HomeComponent {
     }
     console.log('click');
   }
-
 }

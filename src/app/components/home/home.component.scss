@@ -74,7 +74,7 @@
       color: $white;
       border: 1px solid $gray;
       height: 50px;
-      width: 250px;
+      width: 280px;
       &:hover {
         cursor: pointer;
       }
@@ -121,6 +121,10 @@
     margin: 50px 0;
     .title {
       color: $white;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       &::after,
       &::before {
         content: "";
@@ -141,79 +145,113 @@
       color: gray;
     }
   }
-
+  .title {
+    color: $white;
+    position: relative;
+    margin-bottom: 50px;
+  }
+  .line {
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    width: 70%;
+    height: 5px;
+    background-color: $primary;
+    &::before {
+      content: "";
+      position: absolute;
+      height: 5px;
+      width: 10%;
+      bottom: 0;
+      left: -40px;
+      background-color: $primary;
+    }
+  }
   .feedback {
-    min-height: 100vh;
+    height: auto;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: start;
-    padding: 90px 90px;
     flex-direction: column;
     position: relative;
-    .title {
-      color: $white;
-      position: relative;
-    }
-    .line {
-      position: absolute;
-      bottom: -10px;
-      right: 0;
-      width: 70%;
-      height: 5px;
-      background-color: $primary;
-      &::before {
-        content: "";
-        position: absolute;
-        height: 5px;
-        width: 10%;
-        bottom: 0;
-        left: -40px;
-        background-color: $primary;
-      }
-    }
+
+
     .card_container {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 70px;
-      gap: 50px;
       flex-wrap: wrap;
       .card {
         width: 350px;
-        height: 300px;
+        height: auto;
+        min-height: 350px;
         background-color: $gray;
         border-radius: 20px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         flex-direction: column;
         padding: 20px;
+        gap: 10px;
         position: relative;
+        .top_container{
+          display: flex;
+          margin-top: 20px;
+          width: 100%;
+          height: 50%;
+          flex: 1 1 50%;
+          flex-direction: column;
+          align-items: center;
+        }
         .icon {
           fa-icon {
             color: $primary;
             font-size: 2rem;
           }
         }
+        .text_container{
+          height: 50%;
+          flex: 1 1 50%;
 
+        }
         span,
         .name {
           text-align: center;
           color: $white;
         }
         .image {
-          max-width: 300px;
-          max-height: 300px;
-          background-color: $primary;
+          max-width: 100px;
+          max-height: 100px;
+          min-height: 100px;
+          min-width: 100px;
           border-radius: 50%;
+          overflow: hidden;
+          position: absolute;
+          top: -50px;
+          img{
+            width: 100%;
+          }
+        }
+        .border{
+          position: absolute;
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+          border: 1px solid $primary;
+          left: calc(50% - 65px);
+          top: -65px;
+          opacity: .2;
         }
         .stars {
-          position: absolute;
-          bottom: -40px;
-          left: 0;
+          margin-top: 40px;
           color: $primary;
+        }
+        .cargo{
+          color: rgb(182, 182, 182);
+          font-weight: 300;
+          font-size: .8;
         }
       }
     }
@@ -317,7 +355,7 @@
     }
     .feedback {
       .card_container {
-        margin-top: 70px;
+        // margin-top: 70px;
         gap: 30px;
         .card {
           width: 300px;
@@ -464,14 +502,14 @@
       padding: 20px 20px;
     }
     .feedback{
-      padding: 90px 20px;
+      // padding: 90px 20px;
       .title{
         h1{
           font-size: 1.2rem;
         }
       }
       .card_container{
-        margin-top: 0;
+        height: 70vh;
       }
     }
     .whatsapp {

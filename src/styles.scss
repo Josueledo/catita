@@ -130,15 +130,12 @@ p-tabview {
   }
   .p-drawer-header {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     border-bottom: 1px solid $whiteGray;
-    &::after {
-      content: "Quase lá...";
-      position: absolute;
-      left: 20px;
-      color: $gray;
-      font-weight: 600;
-    }
+
+    color: rgb(87, 87, 87);
+
+
     .p-button {
       background-color: transparent !important;
       border: none;
@@ -255,8 +252,8 @@ button {
   background-color: rgb(201, 77, 77) !important;
   color: white !important;
 }
-.p-toast-message-sucess{
-  background-color: rgb(100, 201, 77) !important;
+.p-toast-message-success{
+  background-color: rgb(79, 167, 60) !important;
   color: white !important;
 }
 .p-button-text{

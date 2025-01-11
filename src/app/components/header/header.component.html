@@ -4,6 +4,8 @@
   [baseZIndex]="1000"
   (onHide)="onSidebarHide($event)"
 >
+<ng-template pTemplate="header">Quase lá...</ng-template>
+
   <p-tabView
     [(activeIndex)]="activeTabIndex"
     (click)="$event.stopPropagation()"
@@ -86,10 +88,18 @@
                   type="text"
                   class="form-control"
                 />
-                <div *ngIf="enderecoForm.get('nome')!.invalid && enderecoForm.get('nome')!.touched">
-                  <small *ngIf="enderecoForm.get('nome')!.hasError('required')">Nome é obrigatório.</small>
-                  <small *ngIf="enderecoForm.get('nome')!.hasError('minlength')">Nome deve ter no mínimo 3 caracteres.</small>
-
+                <div
+                  *ngIf="
+                    enderecoForm.get('nome')!.invalid &&
+                    enderecoForm.get('nome')!.touched
+                  "
+                >
+                  <small *ngIf="enderecoForm.get('nome')!.hasError('required')"
+                    >Nome é obrigatório.</small
+                  >
+                  <small *ngIf="enderecoForm.get('nome')!.hasError('minlength')"
+                    >Nome deve ter no mínimo 3 caracteres.</small
+                  >
                 </div>
               </div>
               <div class="form-group">
@@ -100,9 +110,20 @@
                   type="text"
                   class="form-control"
                 />
-                <div *ngIf="enderecoForm.get('numero')!.invalid && enderecoForm.get('numero')!.touched">
-                  <small *ngIf="enderecoForm.get('numero')!.hasError('required')">Numero é obrigatório.</small>
-                  <small *ngIf="enderecoForm.get('numero')!.hasError('minlength')">Numero deve ter no mínimo 9 caracteres.</small>
+                <div
+                  *ngIf="
+                    enderecoForm.get('numero')!.invalid &&
+                    enderecoForm.get('numero')!.touched
+                  "
+                >
+                  <small
+                    *ngIf="enderecoForm.get('numero')!.hasError('required')"
+                    >Numero é obrigatório.</small
+                  >
+                  <small
+                    *ngIf="enderecoForm.get('numero')!.hasError('minlength')"
+                    >Numero deve ter no mínimo 9 caracteres.</small
+                  >
                 </div>
               </div>
               <div class="form-group">
@@ -114,9 +135,18 @@
                   class="form-control"
                   maxlength="11"
                 />
-                <div *ngIf="enderecoForm.get('cpf')!.invalid && enderecoForm.get('cpf')!.touched">
-                  <small *ngIf="enderecoForm.get('cpf')!.hasError('required')">CPF é obrigatório.</small>
-                  <small *ngIf="enderecoForm.get('cpf')!.hasError('pattern')">CPF deve ter 11 dígitos numéricos.</small>
+                <div
+                  *ngIf="
+                    enderecoForm.get('cpf')!.invalid &&
+                    enderecoForm.get('cpf')!.touched
+                  "
+                >
+                  <small *ngIf="enderecoForm.get('cpf')!.hasError('required')"
+                    >CPF é obrigatório.</small
+                  >
+                  <small *ngIf="enderecoForm.get('cpf')!.hasError('pattern')"
+                    >CPF deve ter 11 dígitos numéricos.</small
+                  >
                 </div>
               </div>
 
@@ -128,9 +158,18 @@
                   type="text"
                   class="form-control"
                 />
-                <div *ngIf="enderecoForm.get('cep')!.invalid && enderecoForm.get('cep')!.touched">
-                  <small *ngIf="enderecoForm.get('cep')!.hasError('required')">CEP é obrigatório.</small>
-                  <small *ngIf="enderecoForm.get('cep')!.hasError('pattern')">CEP deve estar no formato 00000-000.</small>
+                <div
+                  *ngIf="
+                    enderecoForm.get('cep')!.invalid &&
+                    enderecoForm.get('cep')!.touched
+                  "
+                >
+                  <small *ngIf="enderecoForm.get('cep')!.hasError('required')"
+                    >CEP é obrigatório.</small
+                  >
+                  <small *ngIf="enderecoForm.get('cep')!.hasError('pattern')"
+                    >CEP deve estar no formato 00000-000.</small
+                  >
                 </div>
               </div>
               <div class="form-group">
@@ -141,9 +180,19 @@
                   type="text"
                   class="form-control"
                 />
-                <div *ngIf="enderecoForm.get('cidade')!.invalid && enderecoForm.get('cidade')!.touched">
-                  <small *ngIf="enderecoForm.get('cidade')!.hasError('required')">Cidade  é obrigatório.</small>
-                  <small *ngIf="enderecoForm.get('cidade')!.hasError('min')">Cidade deve ter no mínimo 3 caracteres.</small>
+                <div
+                  *ngIf="
+                    enderecoForm.get('cidade')!.invalid &&
+                    enderecoForm.get('cidade')!.touched
+                  "
+                >
+                  <small
+                    *ngIf="enderecoForm.get('cidade')!.hasError('required')"
+                    >Cidade é obrigatório.</small
+                  >
+                  <small *ngIf="enderecoForm.get('cidade')!.hasError('min')"
+                    >Cidade deve ter no mínimo 3 caracteres.</small
+                  >
                 </div>
               </div>
               <div class="form-group">
@@ -154,9 +203,19 @@
                   type="text"
                   class="form-control"
                 />
-                <div *ngIf="enderecoForm.get('bairro')!.invalid && enderecoForm.get('bairro')!.touched">
-                  <small *ngIf="enderecoForm.get('bairro')!.hasError('required')">Bairro  é obrigatório.</small>
-                  <small *ngIf="enderecoForm.get('bairro')!.hasError('min')">Bairro deve ter no mínimo 3 caracteres.</small>
+                <div
+                  *ngIf="
+                    enderecoForm.get('bairro')!.invalid &&
+                    enderecoForm.get('bairro')!.touched
+                  "
+                >
+                  <small
+                    *ngIf="enderecoForm.get('bairro')!.hasError('required')"
+                    >Bairro é obrigatório.</small
+                  >
+                  <small *ngIf="enderecoForm.get('bairro')!.hasError('min')"
+                    >Bairro deve ter no mínimo 3 caracteres.</small
+                  >
                 </div>
               </div>
               <div class="form-group">
@@ -167,9 +226,18 @@
                   type="text"
                   class="form-control"
                 />
-                <div *ngIf="enderecoForm.get('rua')!.invalid && enderecoForm.get('rua')!.touched">
-                  <small *ngIf="enderecoForm.get('rua')!.hasError('required')">Rua  é obrigatório.</small>
-                  <small *ngIf="enderecoForm.get('rua')!.hasError('min')">Rua deve ter no mínimo 3 caracteres.</small>
+                <div
+                  *ngIf="
+                    enderecoForm.get('rua')!.invalid &&
+                    enderecoForm.get('rua')!.touched
+                  "
+                >
+                  <small *ngIf="enderecoForm.get('rua')!.hasError('required')"
+                    >Rua é obrigatório.</small
+                  >
+                  <small *ngIf="enderecoForm.get('rua')!.hasError('min')"
+                    >Rua deve ter no mínimo 3 caracteres.</small
+                  >
                 </div>
               </div>
               <div class="form-group">
@@ -180,9 +248,19 @@
                   type="text"
                   class="form-control"
                 />
-                <div *ngIf="enderecoForm.get('numeroCasa')!.invalid && enderecoForm.get('numeroCasa')!.touched">
-                  <small *ngIf="enderecoForm.get('numeroCasa')!.hasError('required')">Numero da casa é obrigatório.</small>
-                  <small *ngIf="enderecoForm.get('numeroCasa')!.hasError('min')">Numero da casa deve ser maior que 0.</small>
+                <div
+                  *ngIf="
+                    enderecoForm.get('numeroCasa')!.invalid &&
+                    enderecoForm.get('numeroCasa')!.touched
+                  "
+                >
+                  <small
+                    *ngIf="enderecoForm.get('numeroCasa')!.hasError('required')"
+                    >Numero da casa é obrigatório.</small
+                  >
+                  <small *ngIf="enderecoForm.get('numeroCasa')!.hasError('min')"
+                    >Numero da casa deve ser maior que 0.</small
+                  >
                 </div>
               </div>
               <div class="form-group">
@@ -195,10 +273,13 @@
                 />
               </div>
 
-
-
-
-              <button type="submit" [disabled]="enderecoForm.invalid" class="btn-submit">Enviar</button>
+              <button
+                type="submit"
+                [disabled]="enderecoForm.invalid"
+                class="btn-submit"
+              >
+                Enviar
+              </button>
             </form>
           </div>
         </div>
@@ -211,12 +292,18 @@
   position="right"
   [baseZIndex]="1000"
   (onHide)="onSidebarHide($event)"
+  class="categoria"
 >
-  <div class="container_sidebar" (click)="$event.stopPropagation()">
-    <div class="categoria" (click)="$event.stopPropagation()">
-      <p-panelMenu [model]="items"></p-panelMenu>
+<ng-template pTemplate="header">Categorias</ng-template>
+
+  <ng-template pTemplate="content">
+    <div class="container_sidebar" (click)="$event.stopPropagation()">
+      <div class="categoria" (click)="$event.stopPropagation()">
+        <p-panelMenu [model]="items"></p-panelMenu>
+      </div>
     </div>
-  </div>
+
+  </ng-template>
 </p-sidebar>
 
 <div class="container">
@@ -233,7 +320,13 @@
         <fa-icon
           [icon]="faBagShopping"
           (click)="displaySidebar = true"
-        ></fa-icon>
+          class="cart"
+        >
+        </fa-icon>
+        @if (cartItems.length > 0) {
+        <div class="quantidade">{{ cartItems.length }}</div>
+        }
+
         <fa-icon
           [icon]="faBars"
           class="bars"
