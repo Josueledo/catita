@@ -15,7 +15,7 @@ import {
   faTag,
   faPalette,
   faTrophy,
-  faLock
+  faLock,
 } from '@fortawesome/free-solid-svg-icons';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
@@ -53,7 +53,7 @@ import { HeaderComponent } from '../header/header.component';
     ReactiveFormsModule,
     TabViewModule,
     HeaderComponent,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -67,21 +67,21 @@ export class HomeComponent {
   faBars = faBars;
   responsiveMenu = false;
   displaySidebar = false;
-  faTrophy = faTrophy
+  faTrophy = faTrophy;
   faBagShopping = faBagShopping;
-  faGift =faGift
-  faPalette = faPalette
-  faTag = faTag
-  faLock = faLock
+  faGift = faGift;
+  faPalette = faPalette;
+  faTag = faTag;
+  faLock = faLock;
   searchTerm: string = '';
   items!: MenuItem[];
   total: number = 0;
   enderecoForm: FormGroup;
   activeTabIndex: number = 0; // Define o índice da aba ativa
-
+  moreSold: any = [];
   quantity: number = 1; // Quantidade inicial
   phoneNumber = '5533988711659';
-
+  latestProducts: any[] = [];
   // itemsCarrinho = localStorage.getItem("carrinho")
   private crudService = inject(CrudService);
   private isBrowser: boolean;
@@ -92,23 +92,21 @@ export class HomeComponent {
   feedbacks: any = [
     {
       text: 'Eu fiquei extremamente satisfeita com minha experiência na loja. […] A qualidade é excelente, os detalhes são perfeitos, por isso já estou na minha quarta compra na loja.',
-      image:'pessoa1.jpg',
-      name:'Danielle Fernandes'
+      image: 'pessoa1.jpg',
+      name: 'Danielle Fernandes',
     },
     {
       text: 'Atendimento impecável. Só tenho elogios.',
-      image:'pessoa2.jpg',
-      name:'Lyvia Passos'
-
+      image: 'pessoa2.jpg',
+      name: 'Lyvia Passos',
     },
     {
       text: 'Minha experiência com a loja foi ótima! Além de um atendimento atencioso e eficiente, a camisa superou minhas expectativas, tanto pela beleza quanto pelo acabamento.',
-      image:'pessoa3.jpg',
-      name:'Ana Carolina'
-
+      image: 'pessoa3.jpg',
+      name: 'Ana Carolina',
     },
   ];
-  firebaseItems: any = [];
+  firebaseItems: [] = [];
   images = [
     {
       id: 1,
@@ -135,7 +133,9 @@ export class HomeComponent {
     });
     this.crudService.getItems().subscribe((data) => {
       this.products = data;
-      console.log(this.products[0].categoria);
+      this.latestProducts = this.filterLatestProducts(data);
+      console.log(this.latestProducts)
+      this.moreSold = data.filter((product) => product.maisVendido);
     });
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
@@ -153,7 +153,7 @@ export class HomeComponent {
         numScroll: 1,
       },
       {
-        breakpoint: '730px',
+        breakpoint: '800px',
         numVisible: 1,
         numScroll: 1,
       },
@@ -163,6 +163,7 @@ export class HomeComponent {
         numScroll: 1,
       },
     ];
+
   }
 
   hover(product: any) {}
@@ -170,6 +171,21 @@ export class HomeComponent {
   trackByProduct(index: number, product: any): number {
     return product.id; // Identificador único
   }
+  filterLatestProducts(products: any[]): any[] {
+    // Filtrar itens que possuem o campo `dataPostagem`
+    const filteredProducts = products.filter(product => product.postDate);
+
+    // Ordenar os produtos por `dataPostagem` em ordem decrescente
+    const sortedProducts = filteredProducts.sort((a, b) => {
+      const dateA = a.postDate.toMillis();
+      const dateB = b.postDate.toMillis();
+      return dateB - dateA; // Mais recentes primeiro
+    });
+
+    // Retornar os 10 primeiros itens
+    return sortedProducts.slice(0, 10);
+  }
+
 
   onSearch(): void {
     if (this.searchTerm.trim()) {

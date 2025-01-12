@@ -264,12 +264,12 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      height: 500px;
+      height: 540px;
     }
     .card {
       padding-bottom: 30px;
       width: 300px;
-      height: 480px;
+      height: 520px;
       color: $white;
       border: 1px solid $gray;
       border-radius: 20px;
@@ -283,7 +283,7 @@
       }
       .img_container {
         width: 300px;
-        height: 300px;
+        max-height: 500px;
         overflow: hidden;
         border-radius: 20px;
         display: flex;
@@ -298,6 +298,7 @@
         margin-top: 20px;
         width: 100%;
         padding: 0 25px;
+        margin-bottom: 0;
         h2 {
           font-size: 1rem;
           font-weight: 500;
@@ -466,7 +467,7 @@
         max-width: 260px;
         max-height: auto;
         gap: 10px;
-
+        height: 400px;
         .img_container {
           width: 260px;
           height: 260px;

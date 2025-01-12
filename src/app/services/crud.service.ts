@@ -5,8 +5,12 @@ import {
   collection,
   collectionData,
   doc,
+  getDocs,
+  limit,
+  orderBy,
   updateDoc,
 } from '@angular/fire/firestore';
+import { query } from 'express';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -32,4 +36,5 @@ export class CrudService {
     const itemDoc = doc(this.firestore, `${this.collectionName}/${id}`);
     await updateDoc(itemDoc, data);
   }
+
 }
