@@ -60,9 +60,11 @@ export class SearchComponent {
 
   filterProducts(categories: string[] = [], searchTerm: string = ''): void {
     this.filteredProducts = this.products.filter((product: any) => {
-      // Verificar se as categorias coincidem exatamente
+      // Verificar se as categorias do filtro estão incluídas nas categorias do produto
       const matchesCategories = categories.length
-        ? this.arraysAreEqual(product.categoria || [], categories)
+        ? categories.every((category) =>
+            (product.categoria || []).map((c: string) => c.toLowerCase()).includes(category.toLowerCase())
+          )
         : true;
 
       // Verificar se o termo de busca coincide
@@ -73,6 +75,7 @@ export class SearchComponent {
       return matchesCategories && matchesSearchTerm;
     });
   }
+
 
   // Função para verificar igualdade exata entre dois arrays
   arraysAreEqual(arr1: string[], arr2: string[]): boolean {
