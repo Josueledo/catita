@@ -4,7 +4,7 @@
   [baseZIndex]="1000"
   (onHide)="onSidebarHide($event)"
 >
-<ng-template pTemplate="header">Quase lá...</ng-template>
+  <ng-template pTemplate="header">Quase lá...</ng-template>
 
   <p-tabView
     [(activeIndex)]="activeTabIndex"
@@ -77,7 +77,7 @@
           <div>
             <form
               [formGroup]="enderecoForm"
-              (ngSubmit)="onSubmit()"
+              (ngSubmit)="openPopup()"
               class="form-container"
             >
               <div class="form-group">
@@ -294,7 +294,7 @@
   (onHide)="onSidebarHide($event)"
   class="categoria"
 >
-<ng-template pTemplate="header">Categorias</ng-template>
+  <ng-template pTemplate="header">Categorias</ng-template>
 
   <ng-template pTemplate="content">
     <div class="container_sidebar" (click)="$event.stopPropagation()">
@@ -302,9 +302,27 @@
         <p-panelMenu [model]="items"></p-panelMenu>
       </div>
     </div>
-
   </ng-template>
 </p-sidebar>
+
+<div class="overlay" *ngIf="showPopup" (click)="closePopup()"></div>
+
+<div class="popup-overlay" *ngIf="showPopup">
+  <div class="popup">
+    <h3>Selecione quem irá te atender:</h3>
+    <div class="card_container">
+      <div class="card gleuton" (click)="handleButtonClick(1)">
+        <div class="image"></div>
+        <span>Gleuton</span>
+      </div>
+      <div class="line"></div>
+      <div class="card cardoso" (click)="handleButtonClick(2)">
+        <div class="image"></div>
+        <span>Cardoso</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="header_container">

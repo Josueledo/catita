@@ -60,9 +60,9 @@ export class HeaderComponent {
   enderecoForm: FormGroup;
   activeTabIndex: number = 0; // Define o índice da aba ativa
   cartItems: any[] = [];
-
+  showPopup: boolean = false;
   quantity: number = 1; // Quantidade inicial
-  phoneNumber = '5533988711659';
+  phoneNumber = '';
 
   constructor(
     private fb: FormBuilder,
@@ -955,6 +955,7 @@ export class HeaderComponent {
       this.updateValue();
       console.log(this.cartItems);
     });
+
   }
   onSearch(): void {
     if (this.searchTerm.trim()) {
@@ -1014,18 +1015,13 @@ export class HeaderComponent {
       for (let i = 0; i < this.cartItems.length; i++) {
         let text = `
           *Produto:* ${this.cartItems[i].title}
-          \n *Quantidade:* ${this.cartItems[i].quantity}
-          \n *Nome personalizado:* ${
-            this.cartItems[i].custom_name || 'Não informado'
-          }
-          \n *Número personalizado:* ${
-            this.cartItems[i].custom_number || 'Não informado'
-          }
-          \n *Tamanho:* ${this.cartItems[i].size}
-          \n *Preço:* R$${(
-            this.cartItems[i].price * this.cartItems[i].quantity
-          ).toFixed(2)}
+          \n*Quantidade:* ${this.cartItems[i].quantity}
+          \n*Nome personalizado:* ${this.cartItems[i].custom_name || 'Não informado'}
+          \n*Número personalizado:* ${this.cartItems[i].custom_number || 'Não informado'}
+          \n*Tamanho:* ${this.cartItems[i].size}
+          \n*Preço:* R$${(this.cartItems[i].price * this.cartItems[i].quantity).toFixed(2)}
           \n
+          ─────────────────────────────
         `;
         message += text;
       }
@@ -1036,27 +1032,49 @@ export class HeaderComponent {
         *TOTAL:* R$${this.total.toFixed(2)}
         \n
         *Endereço de entrega:*
-        \n *Nome:* ${this.enderecoForm.value.nome}
-        \n *CPF:* ${this.enderecoForm.value.cpf}
-        \n *CEP:* ${this.enderecoForm.value.cep}
-        \n *Número:* ${this.enderecoForm.value.numeroCasa}
-        \n *Cidade:* ${this.enderecoForm.value.cidade}
+        \n
+        *Nome:* ${this.enderecoForm.value.nome}
+        \n
+        *CPF:* ${this.enderecoForm.value.cpf}
+        \n
+        *CEP:* ${this.enderecoForm.value.cep}
+        \n
+        *Número:* ${this.enderecoForm.value.numeroCasa}
+        \n
+        *Cidade:* ${this.enderecoForm.value.cidade}
       `;
 
       console.log(this.enderecoForm.value.nome);
 
       // Criando o link para o WhatsApp com a mensagem
-      const url = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(
-        message
-      )}`;
+      const url = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
     } else {
       console.log('Formulário inválido!');
     }
   }
+
   onCategorySelected(categories: string[]): void {
     this.router.navigate(['/search'], {
       queryParams: { categories: categories.join(',') },
     });
+  }
+  openPopup(): void {
+    this.showPopup = true; // Exibe o popup
+  }
+
+  closePopup(): void {
+    this.showPopup = false; // Fecha o popup
+  }
+
+  handleButtonClick(buttonNumber: number): void {
+    this.showPopup = false; // Fecha o popup após clicar
+    if (buttonNumber === 1) {
+      this.phoneNumber = '5533999432252'
+      this.onSubmit()
+    } else if (buttonNumber === 2) {
+      this.phoneNumber = '5531973101528'
+      this.onSubmit()
+    }
   }
 }

@@ -201,7 +201,7 @@
   }
 }
 
-.quantidade{
+.quantidade {
   background-color: rgb(241, 62, 62);
   width: 20px;
   height: 20px;
@@ -210,7 +210,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-size: .8rem;
+  font-size: 0.8rem;
   left: 10px;
   top: 17px;
 }
@@ -219,11 +219,11 @@ button:disabled {
   color: #888; /* Cor do texto quando desabilitado */
   cursor: not-allowed; /* Cursor de "não permitido" */
   opacity: 0.6;
-  &:hover{
+  &:hover {
     background-color: #ccc;
   }
 }
-small{
+small {
   color: red;
 }
 .finish {
@@ -378,27 +378,141 @@ small{
         }
       }
     }
-    .menu{
+    .menu {
       padding: 20px 20px;
     }
-    .feedback{
+    .feedback {
       padding: 90px 20px;
-      .title{
-        h1{
+      .title {
+        h1 {
           font-size: 1.2rem;
         }
       }
-      .card_container{
+      .card_container {
         margin-top: 0;
       }
     }
     .whatsapp {
-
       margin: 20px;
       img {
         width: 60px;
         filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.41));
       }
     }
+  }
+}
+/* Overlay do popup */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 100000;
+  padding: 25px;
+  max-width: 350px;
+  animation: fadeIn 0.3s ease;
+  color: gray;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  h3{
+    font-weight: 500;
+  }
+  button{
+    position: absolute;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    color: rgb(54, 54, 54);
+    top: 0;
+    margin: 5px;
+    font-size: 1.2rem;
+  }
+  .card_container {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+    .line{
+      width: 2px;
+      height: 130px;
+      background-color: rgba(216, 216, 216, 0.652);
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      height: 150px;
+      align-items: center;
+      justify-content: space-between;
+      &:hover{
+        cursor: pointer;
+        background-color: rgba(243, 243, 243, 0.714);
+      }
+      span{
+        font-weight: 600;
+      }
+      .image{
+        width: 100%;
+        height: 120px;
+
+      }
+      &.gleuton{
+        .image{
+          background:url("/gleutonAvatar2.png");
+          background-size: cover;
+        }
+      }
+      &.cardoso{
+        .image{
+          height: 140px;
+          background:url("/cardosoAvatar2.png");
+          background-size: cover;
+        }
+      }
+    }
+  }
+}
+
+.popup-content h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.close-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
   }
 }

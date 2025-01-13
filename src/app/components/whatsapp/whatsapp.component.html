@@ -1,3 +1,22 @@
-<div class="whatsapp">
+<div class="whatsapp" (click)="openPopup()">
   <img src="./whatsapp.png" alt="" />
+</div>
+
+<div class="overlay" *ngIf="showPopup" (click)="closePopup()"></div>
+
+<div class="popup-overlay" *ngIf="showPopup">
+  <div class="popup">
+    <h3>Selecione quem irá te atender:</h3>
+    <div class="card_container">
+      <div class="card gleuton" (click)="handleButtonClick(1)">
+        <div class="image"></div>
+        <span>Gleuton</span>
+      </div>
+      <div class="line"></div>
+      <div class="card cardoso" (click)="handleButtonClick(2)">
+        <div class="image"></div>
+        <span>Cardoso</span>
+      </div>
+    </div>
+  </div>
 </div>

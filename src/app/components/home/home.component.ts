@@ -36,6 +36,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuItem } from 'primeng/api';
 import { TabPanel, TabViewModule } from 'primeng/tabview';
 import { HeaderComponent } from '../header/header.component';
+import { WhatsappComponent } from '../whatsapp/whatsapp.component';
 
 @Component({
   selector: 'app-home',
@@ -54,6 +55,7 @@ import { HeaderComponent } from '../header/header.component';
     TabViewModule,
     HeaderComponent,
     CommonModule,
+    WhatsappComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -85,6 +87,7 @@ export class HomeComponent {
   // itemsCarrinho = localStorage.getItem("carrinho")
   private crudService = inject(CrudService);
   private isBrowser: boolean;
+  showPopup: boolean = false;
 
   responsiveOptions: any[] | undefined;
 
@@ -163,9 +166,23 @@ export class HomeComponent {
         numScroll: 1,
       },
     ];
-
+  }
+  openPopup() {
+    this.showPopup = true;
   }
 
+  onPopupClose() {
+    this.showPopup = false;
+  }
+  handleButtonClick(buttonNumber: number) {
+    console.log(`Botão ${buttonNumber} clicado`);
+    // Adicione a lógica para redirecionar para o WhatsApp
+    if (buttonNumber === 1) {
+      window.open('https://wa.me/numero1', '_blank');
+    } else if (buttonNumber === 2) {
+      window.open('https://wa.me/numero2', '_blank');
+    }
+  }
   hover(product: any) {}
 
   trackByProduct(index: number, product: any): number {

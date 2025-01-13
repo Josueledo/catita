@@ -269,7 +269,7 @@
     .card {
       padding-bottom: 30px;
       width: 300px;
-      height: 520px;
+      max-height: 480px;
       color: $white;
       border: 1px solid $gray;
       border-radius: 20px;
@@ -290,6 +290,7 @@
         align-items: center;
         justify-content: center;
         img {
+          max-height: 300px;
           width: 100%;
           object-fit: cover;
         }
@@ -463,11 +464,9 @@
         height: auto;
       }
       .card {
-        padding-bottom: 15px;
         max-width: 260px;
         max-height: auto;
         gap: 10px;
-        height: 400px;
         .img_container {
           width: 260px;
           height: 260px;

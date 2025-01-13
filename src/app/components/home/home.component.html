@@ -78,12 +78,12 @@
           <div class="details">
             <span
               >Em até 3x de
-              <strong>{{ (product.price / 3).toFixed(2) }}</strong></span
+              <strong>R$ {{ (product.price / 3).toFixed(2)}}</strong></span
             >
             <span
               >ou
               <span class="desconto"
-                >R$ {{ (product.price * 10) / 100 }},00</span
+                >R$ {{product.price - ( (product.price * 10) / 100) }},00</span
               >
               via PIX</span
             >
@@ -139,15 +139,16 @@
             <span
               >ou
               <span class="desconto"
-                >R$ {{ (product.price * 10) / 100 }},00</span
-              >
-              via PIX</span
+              >R$ {{product.price - ( (product.price * 10) / 100) }},00</span
+            >
+            via PIX</span
             >
           </div>
         </div>
       </div>
     </ng-template>
   </p-carousel>
+
 
   <div class="menu" id="menu">
     <div class="card1"></div>
@@ -198,6 +199,7 @@
 </p-carousel>
 
 
+<app-whatsapp (buttonClicked)="openPopup()"></app-whatsapp>
   <app-footer></app-footer>
 
 

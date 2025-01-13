@@ -31,6 +31,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { MessageService } from 'primeng/api';
 import { HeaderComponent } from '../header/header.component';
 import { CartService } from '../../services/cart.service';
+import { WhatsappComponent } from '../whatsapp/whatsapp.component';
 
 @Component({
   selector: 'app-product',
@@ -48,6 +49,7 @@ import { CartService } from '../../services/cart.service';
     FooterComponent,
     ToastModule,
     HeaderComponent,
+    WhatsappComponent
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
