@@ -147,6 +147,17 @@
       padding: 0 20px;
       .top_content {
         order: 1;
+        .details {
+          display: flex;
+          align-items: start;
+          justify-content: center;
+          flex-direction: column;
+            color: rgb(172, 172, 172);
+          .desconto {
+            font-weight: 700;
+            color: $desconto;
+          }
+        }
       }
       .responsive {
         order: 3;

@@ -139,7 +139,7 @@
             <span
               >ou
               <span class="desconto"
-              >R$ {{product.price - ( (product.price * 10) / 100) }},00</span
+              >R$ {{(product.price - ( (product.price * 10) / 100)).toFixed(2)  }}</span
             >
             via PIX</span
             >

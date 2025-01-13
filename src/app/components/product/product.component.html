@@ -26,11 +26,19 @@
           <div class="fullPrice">R${{ product.fullPrice }},00</div>
           <div class="price">R${{ product.price }},00</div>
         </div>
-        <span
-          >em até 3x de
-          <span class="pix">R${{ (product.price / 3).toFixed(2) }}</span> via
-          PIX</span
-        >
+        <div class="details">
+          <span
+            >Em até 3x de
+            <strong>{{ (product.price / 3).toFixed(2) }}</strong></span
+          >
+          <span
+            >ou
+            <span class="desconto"
+            >R$ {{product.price - ( (product.price * 10) / 100) }},00</span
+          >
+          via PIX</span
+          >
+        </div>
       </div>
       <div class="main_content">
         <div class="size_container">

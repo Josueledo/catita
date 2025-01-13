@@ -83,7 +83,7 @@ export class HeaderComponent {
   ngOnInit() {
     this.items = [
       {
-        label: 'Camisas de futebol',
+        label: 'Camisas de Futebol',
         items: [
           {
             label: 'Masculinas',
@@ -893,7 +893,7 @@ export class HeaderComponent {
         ],
       },
       {
-        label: 'Conjunto infantil',
+        label: 'Conjunto Infantil',
         command: () =>
           this.onCategorySelected([
             'Conjunto infantil',
@@ -901,7 +901,7 @@ export class HeaderComponent {
           ]),
       },
       {
-        label: 'Camisas de basquete',
+        label: 'Camisas de Basquete',
         command: () =>
           this.onCategorySelected([
             'Camisas de basquete',
@@ -917,7 +917,7 @@ export class HeaderComponent {
           ]),
       },
       {
-        label: 'Envio imediato',
+        label: 'Envio Imediato',
         command: () =>
           this.onCategorySelected([
             'envio imediato',
