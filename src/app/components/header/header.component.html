@@ -369,6 +369,9 @@
 
       <div class="cart_icon" (click)="displaySidebar = true">
         <fa-icon [icon]="faBagShopping"></fa-icon>
+        @if (cartItems.length > 0) {
+          <div class="quantidade">{{ cartItems.length }}</div>
+          }
       </div>
     </div>
     <div class="categoria">
