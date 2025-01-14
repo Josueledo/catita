@@ -380,6 +380,9 @@
 @media (width <= 1140px) {
   .container {
     .feedback {
+      .card{
+        font-weight: 300;
+      }
       .title {
         font-size: 0.8rem;
       }

@@ -94,7 +94,7 @@ export class HomeComponent {
   products: any = [];
   feedbacks: any = [
     {
-      text: 'Minha experiência na loja foi excelente. O atendimento foi ágil e atencioso, e a qualidade das camisas superou minhas expectativas. Já estou na quarta compra e continuarei comprando e recomendando para meus amigos!',
+      text: 'Minha experiência na loja foi excelente. O atendimento foi ágil e atencioso, e a qualidade das camisas superou minhas expectativas. Já estou na quarta compra e recomendo!',
       image: 'pessoa1.jpg',
       name: 'Danielle Fernandes',
     },
