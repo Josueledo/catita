@@ -94,7 +94,7 @@ export class HomeComponent {
   products: any = [];
   feedbacks: any = [
     {
-      text: 'Eu fiquei extremamente satisfeita com minha experiência na loja. […] A qualidade é excelente, os detalhes são perfeitos, por isso já estou na minha quarta compra na loja.',
+      text: 'Minha experiência na loja foi excelente. O atendimento foi ágil e atencioso, e a qualidade das camisas superou minhas expectativas. Já estou na quarta compra e continuarei comprando e recomendando para meus amigos!',
       image: 'pessoa1.jpg',
       name: 'Danielle Fernandes',
     },
@@ -104,7 +104,7 @@ export class HomeComponent {
       name: 'Lyvia Passos',
     },
     {
-      text: 'Minha experiência com a loja foi ótima! Além de um atendimento atencioso e eficiente, a camisa superou minhas expectativas, tanto pela beleza quanto pelo acabamento.',
+      text: 'Minha experiência com a loja foi excelente. O atendimento foi atencioso e eficiente, e a camisa superou minhas expectativas, tanto em termos de beleza quanto de acabamento.',
       image: 'pessoa3.jpg',
       name: 'Ana Carolina',
     },
@@ -128,13 +128,23 @@ export class HomeComponent {
   images = [
     {
       id: 1,
-      url: '/banner1teste.png',
+      url: '/banner1.png',
       responsiveUrl:'/banner1Mobile.png'
     },
     {
       id: 2,
-      url: '/banner2teste.png',
+      url: '/banner2.png',
       responsiveUrl:'/banner2Mobile.png'
+    },
+    {
+      id: 3,
+      url: '/banner3.png',
+      responsiveUrl:'/banner3Mobile.png'
+    },
+    {
+      id: 4,
+      url: '/banner4.png',
+      responsiveUrl:'/banner4Mobile.png'
     },
 
   ];
