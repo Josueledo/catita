@@ -200,7 +200,7 @@ export class HomeComponent {
     });
 
     // Retornar os 10 primeiros itens
-    return sortedProducts.slice(0, 10);
+    return sortedProducts.slice(0, 5);
   }
 
 

@@ -285,7 +285,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Fluminense',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -294,7 +294,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Fortaleza',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -303,7 +303,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Gremio',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -312,7 +312,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Internacional',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -321,7 +321,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Juventude',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -330,7 +330,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Mirassol',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -339,7 +339,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Palmeiras',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -348,7 +348,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Red Bull Bragantino',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -357,7 +357,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Santos',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -366,7 +366,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Sport Recife',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -375,7 +375,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Sao Paulo',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -384,7 +384,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Vasco',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                       {
@@ -393,7 +393,7 @@ export class HeaderComponent {
                           this.onCategorySelected([
                             'Vitoria',
                             'Torcedor',
-                            'masculino',
+                            'masculinas',
                           ]),
                       },
                     ],

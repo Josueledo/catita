@@ -128,3 +128,18 @@
   }
 }
 
+@media (width <= 600px) {
+  .popup{
+    max-width: 450px;
+    .card_container{
+      .card{
+        height: auto;
+
+        .image{
+          width: 120px;
+          max-height: 120px;
+        }
+      }
+    }
+  }
+}
