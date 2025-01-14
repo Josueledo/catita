@@ -268,27 +268,27 @@ export class HomeComponent {
 
   openNfl(){
     this.router.navigate(['/search'], {
-      queryParams: { q: "Camisas da NFL" },
+      queryParams: { categories: 'nfl' },
     });
   }
   openNba(){
     this.router.navigate(['/search'], {
-      queryParams: { q: "Camisas da NBA" },
+      queryParams: { categories: 'nba' },
     });
   }
   babylook(){
     this.router.navigate(['/search'], {
-      queryParams: { q: "Feminina" },
+      queryParams: { categories: 'Feminina' },
     });
   }
   envioImediato(){
     this.router.navigate(['/search'], {
-      queryParams: { q: "envio Imediato" },
+      queryParams: { categories: 'Envio Imediato' },
     });
   }
   conjuntoInfantil(){
     this.router.navigate(['/search'], {
-      queryParams: { q: "conjunto Infantil" },
+      queryParams: { categories: 'Conjunto Infantil' },
     });
   }
 }
