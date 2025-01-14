@@ -68,7 +68,7 @@ export class ProductComponent {
   customNumber: string = ''; // Número personalizado
   quantity: number = 1; // Quantidade inicial
   selectedSize: string = ''; // Tamanho selecionado
-  availableSizes: string[] = ['P', 'M', 'G', 'GG',"3G"]; // Lista de tamanhos
+  availableSizes: string[] = ['P', 'M', 'G', 'GG','2GG',"3GG"]; // Lista de tamanhos
   private isBrowser: boolean;
   enderecoForm: FormGroup;
   activeTabIndex: number = 0; // Define o índice da aba ativa
@@ -185,8 +185,8 @@ export class ProductComponent {
       price: product.price,
     };
 
-    if (item.custom_name !== '') item.price += 30;
-    if (item.custom_number !== '') item.price += 30;
+    if (item.custom_name !== '') item.price += 10;
+    if (item.custom_number !== '') item.price += 10;
 
     this.cartService.addToCart(item); // Adiciona ao carrinho via serviço
 

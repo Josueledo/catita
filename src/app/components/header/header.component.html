@@ -361,6 +361,7 @@
           type="text"
           placeholder="Buscar produto..."
           [(ngModel)]="searchTerm"
+          (keydown.enter)="onSearch()"
         />
         <button (click)="onSearch()">
           <fa-icon [icon]="faMagnifyingGlass"></fa-icon>

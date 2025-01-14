@@ -101,6 +101,11 @@
     gap: 20px;
     .responsive {
       display: none;
+      .size_container{
+        .sizes{
+          flex-wrap: wrap;
+        }
+      }
     }
     .card_left {
       max-width: 400px;
@@ -161,6 +166,11 @@
       }
       .responsive {
         order: 3;
+        .size_container{
+          .sizes{
+            flex-wrap: wrap;
+          }
+        }
       }
       .status {
         display: flex;
@@ -208,6 +218,7 @@
           display: flex;
           list-style: none;
           gap: 10px;
+          flex-wrap: wrap;
           .selected-size {
             border: 1px solid $primary;
             color: $white;

@@ -421,7 +421,9 @@
   .container {
 
     .title_container {
+      margin-bottom: 70px;
       .title {
+        margin-bottom: 0;
         &::after,
         &::before {
           content: "";
