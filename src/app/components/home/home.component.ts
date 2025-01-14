@@ -108,6 +108,21 @@ export class HomeComponent {
       image: 'pessoa3.jpg',
       name: 'Ana Carolina',
     },
+    {
+      text: 'O atendimento foi atencioso e tirou todas as minhas dúvidas. A qualidade das camisas é excelente. Estou muito satisfeito e sou um cliente fiel da loja!',
+      image: 'pessoa4.jpg',
+      name: 'Filipe Toledo',
+    },
+    {
+      text: 'Camisa excelente, qualidade muito boa e confortável. O atendimento da loja foi rápido e atencioso, com certeza vou comprar de novo. A camisa também chegou bem rápido.',
+      image: 'pessoa5.jpg',
+      name: 'Ádrian Mickael',
+    },
+    {
+      text: 'Atendimento rápido e eficiente, camisas de alta qualidade e preço justo!',
+      image: 'pessoa6.jpg',
+      name: 'Ryan Sousa',
+    },
   ];
   firebaseItems: [] = [];
   images = [
