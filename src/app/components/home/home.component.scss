@@ -92,22 +92,21 @@
     justify-content: center;
     gap: 20px;
     min-height: 85vh;
-    .card1,
-    .card4 {
-      width: 330px;
-      height: 400px;
-      background-color: $primary;
-    }
-    .cards_container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      .card2,
-      .card3 {
-        width: 400px;
-        height: 190px;
-        background-color: $primary;
-      }
+   .card{
+    width: 400px;
+    max-width: 400px;
+   }
+  }
+  .menu2{
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 500px;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+    .card1,.card3{
+      height: 280px;
     }
   }
   .title_container {
@@ -404,6 +403,8 @@
         width: 100%;
         display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: center;
         gap: 20px;
         .card2,
         .card3 {
@@ -501,6 +502,31 @@
     .menu{
       padding: 20px 20px;
     }
+    .menu2{
+      padding: 120px 0;
+      min-height: 600px;
+      flex: 1 1 calc(100%); /* Por padrão, ocupa 100% da largura */
+      width: 100%;
+      max-width: 70%;
+      align-items: center;
+      justify-content: space-between;
+      .card2{
+        order: 1;
+        width: 100%;
+      }
+      .card1{
+        order: 2;
+        width: 48%;
+        height: auto;
+
+      }
+      .card3{
+        width: 48%;
+        height: auto;
+        order: 3;
+
+      }
+    }
     .feedback{
       // padding: 90px 20px;
       .title{
@@ -521,4 +547,20 @@
       }
     }
   }
+}
+@media (width <= 500px) {
+  .container{
+    .menu{
+      .card{
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+       }
+    }
+    .menu2{
+      max-width: 95%;
+
+    }
+  }
+
 }

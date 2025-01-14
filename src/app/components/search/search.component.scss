@@ -71,10 +71,10 @@
 
 .container{
   width: 100%;
-  height: auto;
+  min-height: 200px;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-direction: column;
   .search_title{
     font-size: 1rem;

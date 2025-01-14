@@ -68,7 +68,7 @@ export class ProductComponent {
   customNumber: string = ''; // Número personalizado
   quantity: number = 1; // Quantidade inicial
   selectedSize: string = ''; // Tamanho selecionado
-  availableSizes: string[] = ['PP', 'P', 'M', 'G']; // Lista de tamanhos
+  availableSizes: string[] = ['P', 'M', 'G', 'GG',"3G"]; // Lista de tamanhos
   private isBrowser: boolean;
   enderecoForm: FormGroup;
   activeTabIndex: number = 0; // Define o índice da aba ativa

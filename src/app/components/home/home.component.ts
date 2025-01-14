@@ -200,7 +200,7 @@ export class HomeComponent {
     });
 
     // Retornar os 10 primeiros itens
-    return sortedProducts.slice(0, 5);
+    return sortedProducts.slice(0, 8);
   }
 
 
@@ -211,5 +211,31 @@ export class HomeComponent {
       });
     }
     console.log('click');
+  }
+
+  openNfl(){
+    this.router.navigate(['/search'], {
+      queryParams: { q: "Camisas da NFL" },
+    });
+  }
+  openNba(){
+    this.router.navigate(['/search'], {
+      queryParams: { q: "Camisas da NBA" },
+    });
+  }
+  babylook(){
+    this.router.navigate(['/search'], {
+      queryParams: { q: "Feminina" },
+    });
+  }
+  envioImediato(){
+    this.router.navigate(['/search'], {
+      queryParams: { q: "envio Imediato" },
+    });
+  }
+  conjuntoInfantil(){
+    this.router.navigate(['/search'], {
+      queryParams: { q: "conjunto Infantil" },
+    });
   }
 }

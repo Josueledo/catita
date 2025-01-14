@@ -1,6 +1,5 @@
 @defer{
 
-
 <div class="container">
   <app-header></app-header>
 
@@ -45,7 +44,8 @@
     <h1 class="title">Mais Vendidos</h1>
     <span class="sub">Confira os produtos mais vendidos</span>
   </div>
-  <p-carousel #carousel
+  <p-carousel
+    #carousel
     [value]="moreSold"
     styleClass="custom-carousel"
     [numVisible]="3"
@@ -78,12 +78,12 @@
           <div class="details">
             <span
               >Em até 3x de
-              <strong>R$ {{ (product.price / 3).toFixed(2)}}</strong></span
+              <strong>R$ {{ (product.price / 3).toFixed(2) }}</strong></span
             >
             <span
               >ou
               <span class="desconto"
-                >R$ {{product.price - ( (product.price * 10) / 100) }},00</span
+                >R$ {{ product.price - (product.price * 10) / 100 }},00</span
               >
               via PIX</span
             >
@@ -94,11 +94,8 @@
   </p-carousel>
 
   <div class="menu" id="menu">
-    <div class="card1"></div>
-    <div class="cards_container">
-      <div class="card2"></div>
-      <div class="card3"></div>
-    </div>
+    <img class="card card1" src="/NFL.png" alt="" (click)="openNfl()"/>
+    <img class="card card2" src="/NBA.png" alt="" (click)="openNba()"/>
   </div>
 
   <div class="title_container" id="products2">
@@ -139,9 +136,12 @@
             <span
               >ou
               <span class="desconto"
-              >R$ {{(product.price - ( (product.price * 10) / 100)).toFixed(2)  }}</span
-            >
-            via PIX</span
+                >R$
+                {{
+                  (product.price - (product.price * 10) / 100).toFixed(2)
+                }}</span
+              >
+              via PIX</span
             >
           </div>
         </div>
@@ -149,60 +149,56 @@
     </ng-template>
   </p-carousel>
 
+  <div class="menu2" id="menu">
+    <img class="card card1" src="/babylook.png" alt="" (click)="babylook()" />
+    <img class="card card2" src="/envioImediato.png" alt=""  (click)="envioImediato()"/>
 
-  <div class="menu" id="menu">
-    <div class="card1"></div>
-   <div class="card4"></div>
+    <img class="card card3" src="/conjuntoInfantil.png" alt="" (click)="conjuntoInfantil()"/>
   </div>
   <div class="title">
-    <h1>What our Clients say!</h1>
+    <h1>O que nossos clientes dizem!</h1>
     <div class="line"></div>
   </div>
   <p-carousel
-  [value]="feedbacks"
-  styleClass="custom-carousel"
-  [numVisible]="3"
-  [numScroll]="1"
-  [circular]="true"
-  [style]="{ 'touch-action': 'pan-y' }"
-  [responsiveOptions]="responsiveOptions"
->
-  <ng-template let-feedback pTemplate="item">
-    <div class="feedback" id="feedback">
-      <div class="card_container">
-        <div class="card">
-          <div class="image">
-            <img src={{feedback.image}} alt="">
+    [value]="feedbacks"
+    styleClass="custom-carousel"
+    [numVisible]="3"
+    [numScroll]="1"
+    [circular]="true"
+    [style]="{ 'touch-action': 'pan-y' }"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-feedback pTemplate="item">
+      <div class="feedback" id="feedback">
+        <div class="card_container">
+          <div class="card">
+            <div class="image">
+              <img src="{{ feedback.image }}" alt="" />
+            </div>
+            <div class="border"></div>
+            <div class="top_container">
+              <div class="stars">
+                <fa-icon [icon]="faStar"></fa-icon>
+                <fa-icon [icon]="faStar"></fa-icon>
+                <fa-icon [icon]="faStar"></fa-icon>
+                <fa-icon [icon]="faStar"></fa-icon>
+                <fa-icon [icon]="faStar"></fa-icon>
+              </div>
+              <div class="name">{{ feedback.name }}</div>
+              <div class="cargo">Cliente</div>
+              <div class="icon">
+                <fa-icon [icon]="faQuoteLeft"></fa-icon>
+              </div>
+            </div>
+            <span class="text_container">{{ feedback.text }}</span>
           </div>
-          <div class="border"></div>
-          <div class="top_container">
-          <div class="stars">
-            <fa-icon [icon]="faStar"></fa-icon>
-            <fa-icon [icon]="faStar"></fa-icon>
-            <fa-icon [icon]="faStar"></fa-icon>
-            <fa-icon [icon]="faStar"></fa-icon>
-            <fa-icon [icon]="faStar"></fa-icon>
-          </div>
-          <div class="name">{{feedback.name}}</div>
-          <div class="cargo">Cliente</div>
-          <div class="icon">
-            <fa-icon [icon]="faQuoteLeft"></fa-icon>
-          </div>
-        </div>
-          <span class="text_container"
-            >{{feedback.text}}</span>
-
         </div>
       </div>
-    </div>
-  </ng-template>
-</p-carousel>
+    </ng-template>
+  </p-carousel>
 
-
-<app-whatsapp (buttonClicked)="openPopup()"></app-whatsapp>
+  <app-whatsapp (buttonClicked)="openPopup()"></app-whatsapp>
   <app-footer></app-footer>
-
-
 </div>
 } @loading {
 <div class="container">

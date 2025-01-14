@@ -286,7 +286,9 @@ button {
   background: rgb(226, 226, 226) !important;
   color: var(--p-panelmenu-item-focus-color);
 }
-
+.p-panelmenu-header-link {
+  font-weight: 600 !important;
+}
 
 
 @media (width <= 800px) {
@@ -315,6 +317,7 @@ button {
   }
   .p-panelmenu-header-link {
     color: rgb(59, 59, 59) !important;
+    font-weight: 600 !important;
   }
   .p-panelmenu-header:not(.p-disabled) .p-panelmenu-header-content:hover {
      background: rgb(229, 229, 229) !important;
