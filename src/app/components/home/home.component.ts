@@ -1,5 +1,5 @@
 import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, inject, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, Inject, inject, PLATFORM_ID } from '@angular/core';
 import { Carousel } from 'primeng/carousel';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -114,18 +114,28 @@ export class HomeComponent {
     {
       id: 1,
       url: '/banner1teste.png',
+      responsiveUrl:'/banner1Mobile.png'
     },
     {
       id: 2,
       url: '/banner2teste.png',
+      responsiveUrl:'/banner2Mobile.png'
     },
+
   ];
+  displayedImages: { id: number; url: string }[] = [];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
     private router: Router,
     private fb: FormBuilder
   ) {
+    if (isPlatformBrowser(this.platformId)) {
+      // Executa apenas no navegador
+      this.updateImageUrls();
+      window.addEventListener('resize', this.updateImageUrls.bind(this));
+    }
+
     this.enderecoForm = this.fb.group({
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
@@ -142,7 +152,19 @@ export class HomeComponent {
     });
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
+  @HostListener('window:resize', [])
+  onResize() {
+    this.updateImageUrls(); // Atualizar as URLs ao redimensionar a janela
+  }
+  private updateImageUrls() {
+    const isSmallScreen = window.innerWidth <= 500;
 
+    // Trocar as URLs com base na largura da tela
+    this.displayedImages = this.images.map((image) => ({
+      id: image.id,
+      url: isSmallScreen ? image.responsiveUrl : image.url,
+    }));
+  }
   ngOnInit() {
     this.responsiveOptions = [
       {
@@ -166,6 +188,12 @@ export class HomeComponent {
         numScroll: 1,
       },
     ];
+  }
+  ngOnDestroy(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      // Remove o evento no navegador
+      window.removeEventListener('resize', this.updateImageUrls.bind(this));
+    }
   }
   openPopup() {
     this.showPopup = true;
