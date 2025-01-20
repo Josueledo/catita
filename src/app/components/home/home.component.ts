@@ -268,12 +268,12 @@ export class HomeComponent {
 
   openNfl(){
     this.router.navigate(['/search'], {
-      queryParams: { categories: 'nfl' },
+      queryParams: { categories: 'camisas da nfl' },
     });
   }
   openNba(){
     this.router.navigate(['/search'], {
-      queryParams: { categories: 'nba' },
+      queryParams: { categories: 'camisas de basquete' },
     });
   }
   babylook(){
@@ -283,7 +283,7 @@ export class HomeComponent {
   }
   envioImediato(){
     this.router.navigate(['/search'], {
-      queryParams: { categories: 'Envio Imediato' },
+      queryParams: { filter: 'Pronta entrega' },
     });
   }
   conjuntoInfantil(){

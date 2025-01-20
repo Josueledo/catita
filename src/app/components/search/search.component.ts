@@ -11,7 +11,7 @@ import {
   faQuoteLeft,
   faStar,
   faBars,
-  faBagShopping
+  faBagShopping,
 } from '@fortawesome/free-solid-svg-icons';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { TabPanel, TabViewModule } from 'primeng/tabview';
@@ -19,8 +19,16 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-search',
-  imports: [ CommonModule,RouterLink,FontAwesomeModule,FormsModule,PanelMenuModule,
-      TabViewModule,HeaderComponent,FooterComponent],
+  imports: [
+    CommonModule,
+    RouterLink,
+    FontAwesomeModule,
+    FormsModule,
+    PanelMenuModule,
+    TabViewModule,
+    HeaderComponent,
+    FooterComponent,
+  ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })
@@ -28,18 +36,19 @@ export class SearchComponent {
   products: any = []; // Exemplo de produtos
   filteredProducts: any = [];
   searchTerm: string = '';
-    faPaperPlane = faPaperPlane;
-    faMagnifyingGlass = faMagnifyingGlass;
-    faCartShopping = faCartShopping;
-    faQuoteLeft = faQuoteLeft;
-    faStar = faStar;
-    faBars = faBars;
-    responsiveMenu = false;
+  faPaperPlane = faPaperPlane;
+  faMagnifyingGlass = faMagnifyingGlass;
+  faCartShopping = faCartShopping;
+  faQuoteLeft = faQuoteLeft;
+  faStar = faStar;
+  faBars = faBars;
+  responsiveMenu = false;
+  prontaEntregaFilter: boolean = false;
 
-    displaySidebar = false
-    faBagShopping = faBagShopping
+  displaySidebar = false;
+  faBagShopping = faBagShopping;
   crudService = inject(CrudService);
-  constructor(private route: ActivatedRoute,private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.crudService.getItems().subscribe((data) => {
       this.products = data;
 
@@ -47,8 +56,13 @@ export class SearchComponent {
         const categoriesParam = params['categories'] || '';
         const searchTermParam = params['q'] || '';
         const categories = categoriesParam ? categoriesParam.split(',') : [];
-
-        this.filterProducts(categories, searchTermParam);
+        const filter = params['filter'];
+        if (filter && filter.toLowerCase() === 'pronta entrega') {
+          this.filteredProducts = this.products.filter((product: any) => product.prontaEntrega === true);
+          console.log(this.filteredProducts)
+        } else {
+          this.filterProducts(categories, searchTermParam);
+        }
       });
     });
   }
@@ -58,12 +72,15 @@ export class SearchComponent {
   }
 
 
+
   filterProducts(categories: string[] = [], searchTerm: string = ''): void {
     this.filteredProducts = this.products.filter((product: any) => {
       // Verificar se as categorias do filtro estão incluídas nas categorias do produto
       const matchesCategories = categories.length
         ? categories.every((category) =>
-            (product.categoria || []).map((c: string) => c.toLowerCase()).includes(category.toLowerCase())
+            (product.categoria || [])
+              .map((c: string) => c.toLowerCase())
+              .includes(category.toLowerCase())
           )
         : true;
 
@@ -72,19 +89,18 @@ export class SearchComponent {
         ? product.title.toLowerCase().includes(searchTerm.toLowerCase())
         : true;
 
-      return matchesCategories && matchesSearchTerm;
+      const matchesProntaEntrega = this.prontaEntregaFilter
+        ? product.prontaEntrega === true
+        : true;
+      return matchesCategories && matchesSearchTerm && matchesProntaEntrega;
     });
   }
-
 
   // Função para verificar igualdade exata entre dois arrays
   arraysAreEqual(arr1: string[], arr2: string[]): boolean {
     if (arr1.length !== arr2.length) return false;
     return arr1.sort().join(',') === arr2.sort().join(',');
   }
-
-
-
 
   onSearch(): void {
     if (this.searchTerm.trim()) {
@@ -93,5 +109,4 @@ export class SearchComponent {
       });
     }
   }
-
 }
