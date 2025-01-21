@@ -114,7 +114,6 @@ export class ProductComponent {
     this.carrinho = this.getItem('carrinho')
       ? JSON.parse(this.getItem('carrinho')!)
       : [];
-    console.log(this.carrinho);
 
 
   }
@@ -124,7 +123,6 @@ export class ProductComponent {
   onSubmit() {
     let message: string = '';
     if (this.enderecoForm.valid) {
-      console.log('Itens selecionados: ');
       for (let i = 0; this.carrinho.length > i; i++) {
         let text = `${this.carrinho[i].quantity}X ${
           this.carrinho[i].title
@@ -137,9 +135,7 @@ export class ProductComponent {
         message += text;
       }
       message += '\n \n TOTAL: R$' + this.total + ',00';
-      // console.log('TOTAL: R$' + this.total + ",00");
       message += `\n \n Endereço: \n NOME: ${this.enderecoForm.value.nome} \n CPF: ${this.enderecoForm.value.cpf} \n CEP: ${this.enderecoForm.value.cep} \n Numero: ${this.enderecoForm.value.numeroCasa} \n CIDADE: ${this.enderecoForm.value.cidade}`;
-      console.log(this.enderecoForm.value.nome);
       const url = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(
         message
       )}`;
@@ -205,7 +201,6 @@ export class ProductComponent {
   setItem(key: string, value: string): void {
     if (this.isBrowser) {
       localStorage.setItem(key, value);
-      console.log(localStorage.getItem('carrinho'));
     }
   }
   getItem(key: string): string | null {
@@ -221,6 +216,5 @@ export class ProductComponent {
     if (this.searchTerm.trim()) {
       this.router.navigate(['/search'], { queryParams: { q: this.searchTerm } });
     }
-    console.log("click")
   }
 }

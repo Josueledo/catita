@@ -942,7 +942,6 @@ export class HeaderComponent {
     this.cartService.cart$.subscribe((items) => {
       this.cartItems = items;
       this.updateValue();
-      console.log(this.cartItems);
     });
   }
   onSearch(): void {
@@ -951,10 +950,8 @@ export class HeaderComponent {
         queryParams: { q: this.searchTerm },
       });
     }
-    console.log('click');
   }
   onSidebarHide(event: any) {
-    console.log('Sidebar fechada.');
   }
 
   closeSidebar() {
@@ -975,7 +972,6 @@ export class HeaderComponent {
     }
   }
   increaseCart(product: any) {
-    console.log(product);
     product.quantity++;
     this.updateValue();
   }
@@ -1001,7 +997,6 @@ export class HeaderComponent {
   }
   onSubmit() {
     if (this.enderecoForm.valid) {
-      console.log('Itens selecionados: ');
       let message = '';
 
       // Loop para adicionar cada item do carrinho à mensagem
@@ -1052,7 +1047,6 @@ export class HeaderComponent {
         \n
       `;
 
-      console.log(this.enderecoForm.value.nome);
 
       // Criando o link para o WhatsApp com a mensagem
       const url = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(

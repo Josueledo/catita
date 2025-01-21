@@ -224,6 +224,11 @@ button {
   background-color: $primary;
 }
 
+.p-panelmenu-header-link {
+
+  color: white !important;
+}
+
 @media (width <= 450px) {
   .p-drawer-right .p-drawer {
     width: 100% !important;

@@ -59,7 +59,6 @@ export class SearchComponent {
         const filter = params['filter'];
         if (filter && filter.toLowerCase() === 'pronta entrega') {
           this.filteredProducts = this.products.filter((product: any) => product.prontaEntrega === true);
-          console.log(this.filteredProducts)
         } else {
           this.filterProducts(categories, searchTermParam);
         }

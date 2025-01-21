@@ -228,7 +228,6 @@ export class HomeComponent {
     this.showPopup = false;
   }
   handleButtonClick(buttonNumber: number) {
-    console.log(`Botão ${buttonNumber} clicado`);
     // Adicione a lógica para redirecionar para o WhatsApp
     if (buttonNumber === 1) {
       window.open('https://wa.me/numero1', '_blank');
@@ -263,7 +262,6 @@ export class HomeComponent {
         queryParams: { q: this.searchTerm },
       });
     }
-    console.log('click');
   }
 
   openNfl(){
