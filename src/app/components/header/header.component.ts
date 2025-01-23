@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -97,66 +97,80 @@ export class HeaderComponent {
                     items: [
                       {
                         label: 'Bayer Leverkusen',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Bayer Leverkusen',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Bayer de Munique',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Bayer de Munique',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Borussia Dortmund',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Borussia Dortmund',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: "Borussia M'gladbach",
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             "Borussia M'gladbach",
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Frankfurt',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Frankfurt',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Leipzig',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Leipzig',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Wolfsburg',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Wolfsburg',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                     ],
                   },
@@ -165,57 +179,69 @@ export class HeaderComponent {
                     items: [
                       {
                         label: 'Boca Juniors',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Boca Juniors',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Independiente',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Independiente',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: "Newell's Old Boys",
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             "Newell's Old Boys",
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Racing',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Racing',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'River Plate',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'River Plate',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'San Lorenzo',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'San Lorenzo',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                     ],
                   },
@@ -224,183 +250,223 @@ export class HeaderComponent {
                     items: [
                       {
                         label: 'Atletico-MG',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Atletico mg',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Bahia',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Bahia',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Botafogo',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Botafogo',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Ceará',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Ceara',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Corinthians',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Corinthians',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Cruzeiro',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Cruzeiro',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Flamengo',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Flamengo',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Fluminense',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Fluminense',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Fortaleza',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Fortaleza',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Grêmio',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Gremio',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Internacional',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Internacional',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Juventude',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Juventude',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Mirassol',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Mirassol',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Palmeiras',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Palmeiras',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Red Bull Bragantino',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Red Bull Bragantino',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Santos',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Santos',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Sport Recife',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Sport Recife',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'São Paulo',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Sao Paulo',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Vasco',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Vasco',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Vitória',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Vitoria',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                     ],
                   },
@@ -409,102 +475,124 @@ export class HeaderComponent {
                     items: [
                       {
                         label: 'Athletic Club',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Athletic Club',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Atlético de Madrid',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Atletico de Madrid',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Barcelona',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Barcelona',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Celta de Vigo',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Celta de Vigo',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Girona',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Girona',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Rayo Vallecano',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Rayo Vallecano',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Real Bétis',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Real Betis',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Real Madrid',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Real Madrid',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Real Sociedad',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Real Sociedad',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Valencia',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Valencia',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Villarreal',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Villarreal',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                     ],
                   },
@@ -513,57 +601,69 @@ export class HeaderComponent {
                     items: [
                       {
                         label: 'Lille',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Lille',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Lyon',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Lyon',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Mônaco',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Monaco',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Nice',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Nice',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Olympique de Marseille',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Olympique de Marseille',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Paris Saint-Germain',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Paris Saint Germain',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                     ],
                   },
@@ -572,174 +672,212 @@ export class HeaderComponent {
                     items: [
                       {
                         label: 'Arsenal',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Arsenal',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Aston Villa',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Aston Villa',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Bornemouth',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Bornemouth',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Brentford',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Brentford',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Brighton & Hover ALbion',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Brighton & Hover ALbion',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Chelsea',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Chelsea',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Crystal Palace',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Crystal Palace',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Everton',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Everton',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Fulham',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Fulham',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Leicester City',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Leicester City',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Liverpool',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Liverpool',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Manchester City',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Manchester City',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Manchester United',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Manchester United',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Newcastle United',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Newcastle United',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Nottingham Forest',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Nottingham Forest',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Southampton',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Southampton',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Tottenham',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Tottenham',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'West Ham',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'West Ham',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Wolfsburg',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Wolfsburg',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                     ],
                   },
@@ -748,102 +886,124 @@ export class HeaderComponent {
                     items: [
                       {
                         label: 'Itália',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Italia',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Napoli',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Napoli',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Atalanta',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Atalanta',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Inter de Milão',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Inter de Milao',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Lazio',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Lazio',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Juventos',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Juventos',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Fiorentina',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Fiorentina',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Milan',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Milan',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Roma',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Roma',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Parma',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Parma',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Venezia',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Venezia',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                     ],
                   },
@@ -852,30 +1012,36 @@ export class HeaderComponent {
                     items: [
                       {
                         label: 'Benfica',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Benfica',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Porto',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Porto',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                       {
                         label: 'Sporting',
-                        command: () =>
+                        command: () => {
                           this.onCategorySelected([
                             'Sporting',
                             'Torcedor',
                             'masculinas',
                           ]),
+                            this.closeCategoria();
+                        },
                       },
                     ],
                   },
@@ -883,58 +1049,84 @@ export class HeaderComponent {
               },
               {
                 label: 'Versão de Jogador',
-                command: () => this.onCategorySelected(['Jogador']),
+                command: () => {
+                  this.onCategorySelected(['Jogador']), this.closeCategoria();
+                },
               },
               {
                 label: 'Retrô',
-                command: () => this.onCategorySelected(['Retro']),
+                command: () => {
+                  this.onCategorySelected(['Retro']), this.closeCategoria();
+                },
               },
               {
                 label: 'Seleções',
-                items: [{ label: 'Corinthians' }, { label: 'Palmeiras' }],
+                command: () => {
+                  this.onCategorySelected(['Brasil']), this.closeCategoria();
+                },
               },
             ],
           },
           {
             label: 'Feminina',
-            command: () => this.onCategorySelected(['Feminina']),
+            command: () => {
+              this.onCategorySelected(['Feminina']), this.closeCategoria();
+            },
           },
         ],
       },
       {
         label: 'Conjunto Infantil',
-        command: () => this.onCategorySelected(['Conjunto infantil']),
+        command: () => {
+          this.onCategorySelected(['Conjunto infantil']), this.closeCategoria();
+        },
       },
       {
         label: 'Camisas de Basquete',
-        command: () => this.onCategorySelected(['Camisas de basquete']),
+        command: () => {
+          this.onCategorySelected(['Camisas de basquete']),
+            this.closeCategoria();
+        },
       },
       {
         label: 'Camisas da NFL',
-        command: () => this.onCategorySelected(['Camisas da NFL']),
+        command: () => {
+          this.onCategorySelected(['Camisas da NFL']), this.closeCategoria();
+        },
       },
       {
         label: 'Envio Imediato',
-        command: () => this.onProntaEntregaSelected(),
+        command: () => {
+          this.onProntaEntregaSelected(), this.closeCategoria();
+        },
       },
       {
         label: 'Outros',
         items: [
           {
             label: 'Corta-Vento',
-            command: () => this.onCategorySelected(['Corta vento']),
+            command: () => {
+              this.onCategorySelected(['Corta vento']), this.closeCategoria();
+            },
           },
           {
             label: 'Shorts de futebol',
-            command: () => this.onCategorySelected(['Shorts de futebal']),
+            command: () => {
+              this.onCategorySelected(['Shorts de futebal']),
+                this.closeCategoria();
+            },
           },
           {
             label: 'Meias',
-            command: () => this.onCategorySelected(['Meias']),
+            command: () => {
+              this.onCategorySelected(['Meias']), this.closeCategoria();
+            },
           },
           {
             label: 'Kit de treino',
-            command: () => this.onCategorySelected(['Kit de treino']),
+            command: () => {
+              this.onCategorySelected(['Kit de treino']), this.closeCategoria();
+            },
           },
         ],
       },
@@ -944,6 +1136,13 @@ export class HeaderComponent {
       this.updateValue();
     });
   }
+  closeAllPanels() {
+    this.items.forEach((category) => {
+      if (category.items) {
+        category.expanded = false;
+      }
+    });
+  }
   onSearch(): void {
     if (this.searchTerm.trim()) {
       this.router.navigate(['/search'], {
@@ -951,8 +1150,7 @@ export class HeaderComponent {
       });
     }
   }
-  onSidebarHide(event: any) {
-  }
+  onSidebarHide(event: any) {}
 
   closeSidebar() {
     this.displaySidebar = false;
@@ -994,6 +1192,9 @@ export class HeaderComponent {
     this.router.navigate(['/pronta-entrega'], {
       queryParams: { prontaEntrega: 'true' },
     });
+  }
+  closeCategoria() {
+    this.responsiveMenu = false;
   }
   onSubmit() {
     if (this.enderecoForm.valid) {
@@ -1047,7 +1248,6 @@ export class HeaderComponent {
         \n
       `;
 
-
       // Criando o link para o WhatsApp com a mensagem
       const url = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(
         message
@@ -1058,9 +1258,12 @@ export class HeaderComponent {
     }
   }
   onProntaEntregaSelected(): void {
-    this.router.navigate(['/search'], { queryParams: { filter: 'Pronta entrega' } });
+    this.router.navigate(['/search'], {
+      queryParams: { filter: 'Pronta entrega' },
+    });
   }
   onCategorySelected(categories: string[]): void {
+    this.closeAllPanels()
     const isProntaEntrega = categories.includes('Pronta entrega');
 
     this.router.navigate(['/search'], {
