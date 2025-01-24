@@ -69,6 +69,7 @@ export class ProductComponent {
   quantity: number = 1; // Quantidade inicial
   selectedSize: string = ''; // Tamanho selecionado
   availableSizes: string[] = ['P', 'M', 'G', 'GG','2GG',"3GG"]; // Lista de tamanhos
+  availableKidsSizes: string[] = ['16', '18', '20', '22','24',"26","28"]; 
   private isBrowser: boolean;
   enderecoForm: FormGroup;
   activeTabIndex: number = 0; // Define o índice da aba ativa
@@ -82,9 +83,9 @@ export class ProductComponent {
   cartService = inject(CartService)
   route = inject(ActivatedRoute);
   messageService = inject(MessageService)
-
   secondaryImages!: string[]
-
+  isKids = false
+isCustom = true
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
     private fb: FormBuilder,private router: Router,
@@ -105,11 +106,22 @@ export class ProductComponent {
           this.product = data[i];
           this.selectedImage = this.product.image1
           this.secondaryImages = [this.product.image1,this.product.image2,this.product.image3,this.product.image4,]
+          console.log(this.product)
+          for(let i = 0;this.product.categoria.length > i; i++){
+            console.log(this.product.categoria[i])
+            if(this.product.categoria[i] === "camisas de nba" || this.product.categoria[i] === "camisas da nfl"|| this.product.categoria[i] === "corta vento"|| this.product.categoria[i] === "shorts de futebol" || this.product.categoria[i] === "meias"|| this.product.categoria[i] === "nba"){
+              this.isCustom = false
+              console.log(this.isCustom)
+            }
+            if(this.product.categoria[i] === "conjunto infantil"){
+              this.isKids = true
+            }
+          }
         }
       }
     });
   }
-
+  
   ngOnInit() {
     this.carrinho = this.getItem('carrinho')
       ? JSON.parse(this.getItem('carrinho')!)

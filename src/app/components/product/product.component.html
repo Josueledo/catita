@@ -101,6 +101,7 @@
       <div class="size_container">
         <h1 class="title_size">Tamanho</h1>
         <ul class="sizes">
+          @if (!isKids) {
           <li
             *ngFor="let size of availableSizes"
             [ngClass]="{ 'selected-size': selectedSize === size }"
@@ -113,11 +114,30 @@
               [value]="size"
               [(ngModel)]="selectedSize"
             />
+           
             <label [for]="size">{{ size }}</label>
           </li>
+        }@else {
+          <li
+            *ngFor="let size of availableKidsSizes"
+            [ngClass]="{ 'selected-size': selectedSize === size }"
+            (click)="selectSize(size)"
+          >
+            <input
+              type="radio"
+              [id]="size"
+              name="size"
+              [value]="size"
+              [(ngModel)]="selectedSize"
+            />
+           
+            <label [for]="size">{{ size }}</label>
+          </li>
+        }
         </ul>
       </div>
       <div class="input_container">
+        @if (isCustom === true) {
         <div class="input">
           <label for="name">Personalizar Nome <span>+R$10,00</span></label>
           <input
@@ -136,7 +156,7 @@
             [(ngModel)]="customNumber"
           />
         </div>
-
+      }
         <div class="total">
           <h2>Preço</h2>
           <div class="price">R${{ product.price }},00</div>
