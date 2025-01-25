@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   background-color: $background;
+  color: $white;
 
   .loading{
     color: $gray;
@@ -147,7 +148,6 @@
   .title {
     color: $white;
     position: relative;
-    margin-bottom: 50px;
   }
   .line {
     position: absolute;
