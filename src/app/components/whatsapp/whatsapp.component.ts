@@ -27,4 +27,7 @@ export class WhatsappComponent {
       window.open('https://wa.me/5531973101528', '_blank'); // Redireciona para o WhatsApp 2
     }
   }
+  openWhatsapp(){
+    window.open('https://wa.me/5533999432252', '_blank')
+  }
 }

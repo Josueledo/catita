@@ -1249,6 +1249,8 @@ export class HeaderComponent {
       `;
 
       // Criando o link para o WhatsApp com a mensagem
+      this.phoneNumber = '5533999432252';
+
       const url = `https://wa.me/${this.phoneNumber}?text=${encodeURIComponent(
         message
       )}`;
