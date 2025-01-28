@@ -17,7 +17,7 @@
           [style.background-image]="'url(' + image.url + ')'"
           alt=""
         ></div> -->
-        <img class="image" src="{{ image.url }}" alt="Camisas de time" />
+        <img class="image" src="{{ image.url }}" alt="Camisas de time" title="Artigos esportivos" />
       </ng-template>
     </p-carousel>
   </div>
@@ -62,7 +62,7 @@
           routerLink="/product-details/{{ product.id }}"
         >
           <div class="img_container">
-            <img src="{{ product.image1 }}" alt="{{product.title}}" />
+            <img src="{{ product.image1 }}" alt="{{product.title}}" title="{{product.title}}" />
           </div>
           <div class="title">
             <h2>{{ product.title }}</h2>
@@ -94,8 +94,8 @@
   </p-carousel>
 
   <div class="menu" id="menu">
-    <img class="card card1" src="/NFL.png" alt="Camisas da Nfl" (click)="openNfl()" data-aos="fade-up"/>
-    <img class="card card2" src="/NBA.png" alt="camisas de Nba" (click)="openNba()" data-aos="fade-up" data-aos-delay="300"/>
+    <img class="card card1" src="/NFL.png" alt="Camisas da Nfl" title="Camisas da Nfl" (click)="openNfl()" data-aos="fade-up"/>
+    <img class="card card2" src="/NBA.png" alt="camisas de Nba, Basquete" title="Camisas de Nba" (click)="openNba()" data-aos="fade-up" data-aos-delay="300"/>
   </div>
 
   <div class="title_container" id="products2">
@@ -115,7 +115,7 @@
       <div class="card_container">
         <div class="card" routerLink="/product-details/{{ product.id }}" data-aos="fade-up">
           <div class="img_container">
-            <img src="{{ product.image1 }}" alt="{{product.title}}" />
+            <img src="{{ product.image1 }}" alt="{{product.title}}" title="{{product.title}}"/>
           </div>
           <div class="title">
             <h2>{{ product.title }}</h2>
@@ -150,10 +150,10 @@
   </p-carousel>
 
   <div class="menu2" id="menu">
-    <img class="card card1" src="/babylook.png" alt="camisas femininas" (click)="babylook()" data-aos="fade-up" />
-    <img class="card card2" src="/envioImediato.png" alt="Enveio imediato"  (click)="envioImediato()" data-aos="fade-up" data-aos-delay="300"/>
+    <img class="card card1" src="/babylook.png" alt="camisas de time femininas" title="camisas femininas" (click)="babylook()" data-aos="fade-up" />
+    <img class="card card2" src="/envioImediato.png" alt="Envio imediato" title="Envio imediato"  (click)="envioImediato()" data-aos="fade-up" data-aos-delay="300"/>
 
-    <img class="card card3" src="/conjuntoInfantil.png" alt="Conjunto Infantil" (click)="conjuntoInfantil()" data-aos="fade-up" data-aos-delay="500"/>
+    <img class="card card3" src="/conjuntoInfantil.png" alt="Conjunto Infantil" title="conjunto esportivo infantil" (click)="conjuntoInfantil()" data-aos="fade-up" data-aos-delay="500"/>
   </div>
   <div class="title">
     <h1>O que nossos clientes dizem:</h1>
@@ -173,7 +173,7 @@
         <div class="card_container">
           <div class="card" data-aos="fade-up">
             <div class="image">
-              <img src="{{ feedback.image }}" alt="{{feedback.text}}" />
+              <img src="{{ feedback.image }}" alt="{{feedback.text}}" title="feedback" />
             </div>
             <div class="border"></div>
             <div class="top_container">

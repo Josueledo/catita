@@ -28,7 +28,7 @@
             } @for (product of cartItems; track $index) {
             <div class="item">
               <div class="image">
-                <img src="{{ product.image1 }}" alt="" />
+                <img src="{{ product.image1 }}" alt="{{product.title}}" title="nome da camisa" />
               </div>
               <div class="content">
                 <div class="title">
@@ -305,25 +305,6 @@
   </ng-template>
 </p-sidebar>
 
-<!-- <div class="overlay" *ngIf="showPopup" (click)="closePopup()"></div>
-
-<div class="popup-overlay" *ngIf="showPopup">
-  <div class="popup">
-    <h3>Selecione quem irá te atender:</h3>
-    <div class="card_container">
-      <div class="card gleuton" (click)="handleButtonClick(1)">
-        <div class="image"></div>
-        <span>Gleuton</span>
-      </div>
-      <div class="line"></div>
-      <div class="card cardoso" (click)="handleButtonClick(2)">
-        <div class="image"></div>
-        <span>Cardoso</span>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container">
   <div class="header_container">
     <div class="top_header">
@@ -332,7 +313,7 @@
     </div>
     <div class="header_mobile">
       <div class="logo" routerLink="">
-        <img src="./logo.png" alt="" />
+        <img src="./logo.png" alt="logo la catita sports mobile" title="logo"/>
       </div>
       <div class="cart_icon">
         <fa-icon
@@ -354,7 +335,7 @@
     </div>
     <div class="header">
       <div class="logo" routerLink="">
-        <img src="./logo.png" alt="" />
+        <img src="./logo.png" alt="logo la catita" title="logo" />
       </div>
       <div class="input">
         <input

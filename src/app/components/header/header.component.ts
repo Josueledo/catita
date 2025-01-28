@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -14,13 +14,12 @@ import { CarouselModule } from 'primeng/carousel';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { SidebarModule } from 'primeng/sidebar';
 import { SkeletonModule } from 'primeng/skeleton';
-import { TabPanel, TabViewModule } from 'primeng/tabview';
+import {  TabViewModule } from 'primeng/tabview';
 import {
   faPaperPlane,
   faMagnifyingGlass,
   faCartShopping,
   faQuoteLeft,
-  faStar,
   faBars,
   faBagShopping,
 } from '@fortawesome/free-solid-svg-icons';

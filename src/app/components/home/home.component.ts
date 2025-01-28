@@ -1,4 +1,4 @@
-import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   Component,
   HostListener,
@@ -6,7 +6,6 @@ import {
   inject,
   PLATFORM_ID,
 } from '@angular/core';
-import { Carousel } from 'primeng/carousel';
 import * as AOS from 'aos';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -41,7 +40,7 @@ import {
 
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuItem } from 'primeng/api';
-import { TabPanel, TabViewModule } from 'primeng/tabview';
+import {  TabViewModule } from 'primeng/tabview';
 import { HeaderComponent } from '../header/header.component';
 import { WhatsappComponent } from '../whatsapp/whatsapp.component';
 
