@@ -17,24 +17,24 @@
           [style.background-image]="'url(' + image.url + ')'"
           alt=""
         ></div> -->
-        <img class="image" src="{{ image.url }}" alt="" />
+        <img class="image" src="{{ image.url }}" alt="Camisas de time" />
       </ng-template>
     </p-carousel>
   </div>
   <div class="info">
-    <div class="card">
+    <div class="card" data-aos="fade-up">
       <fa-icon [icon]="faTrophy"></fa-icon>
       <span>Produtos de Qualidade</span>
     </div>
-    <div class="card">
+    <div class="card" data-aos="fade-up"  data-aos-delay="300">
       <fa-icon [icon]="faLock"></fa-icon>
       <span>Pagamento Seguro</span>
     </div>
-    <div class="card">
+    <div class="card" data-aos="fade-up"  data-aos-delay="500">
       <fa-icon [icon]="faTag"></fa-icon>
       <span>Descontos Exclusivos</span>
     </div>
-    <div class="card">
+    <div class="card" data-aos="fade-up"  data-aos-delay="700">
       <fa-icon [icon]="faPalette"></fa-icon>
       <span>Atendimento Personalizado</span>
     </div>
@@ -58,11 +58,11 @@
       <div class="card_container">
         <div
           class="card"
+          data-aos="fade-up"
           routerLink="/product-details/{{ product.id }}"
-          (mouseover)="hover(product)"
         >
           <div class="img_container">
-            <img src="{{ product.image1 }}" alt="" />
+            <img src="{{ product.image1 }}" alt="{{product.title}}" />
           </div>
           <div class="title">
             <h2>{{ product.title }}</h2>
@@ -94,8 +94,8 @@
   </p-carousel>
 
   <div class="menu" id="menu">
-    <img class="card card1" src="/NFL.png" alt="" (click)="openNfl()"/>
-    <img class="card card2" src="/NBA.png" alt="" (click)="openNba()"/>
+    <img class="card card1" src="/NFL.png" alt="Camisas da Nfl" (click)="openNfl()" data-aos="fade-up"/>
+    <img class="card card2" src="/NBA.png" alt="camisas de Nba" (click)="openNba()" data-aos="fade-up" data-aos-delay="300"/>
   </div>
 
   <div class="title_container" id="products2">
@@ -113,9 +113,9 @@
   >
     <ng-template let-product pTemplate="item">
       <div class="card_container">
-        <div class="card" routerLink="/product-details/{{ product.id }}">
+        <div class="card" routerLink="/product-details/{{ product.id }}" data-aos="fade-up">
           <div class="img_container">
-            <img src="{{ product.image1 }}" alt="" />
+            <img src="{{ product.image1 }}" alt="{{product.title}}" />
           </div>
           <div class="title">
             <h2>{{ product.title }}</h2>
@@ -150,10 +150,10 @@
   </p-carousel>
 
   <div class="menu2" id="menu">
-    <img class="card card1" src="/babylook.png" alt="" (click)="babylook()" />
-    <img class="card card2" src="/envioImediato.png" alt=""  (click)="envioImediato()"/>
+    <img class="card card1" src="/babylook.png" alt="camisas femininas" (click)="babylook()" data-aos="fade-up" />
+    <img class="card card2" src="/envioImediato.png" alt="Enveio imediato"  (click)="envioImediato()" data-aos="fade-up" data-aos-delay="300"/>
 
-    <img class="card card3" src="/conjuntoInfantil.png" alt="" (click)="conjuntoInfantil()"/>
+    <img class="card card3" src="/conjuntoInfantil.png" alt="Conjunto Infantil" (click)="conjuntoInfantil()" data-aos="fade-up" data-aos-delay="500"/>
   </div>
   <div class="title">
     <h1>O que nossos clientes dizem:</h1>
@@ -171,9 +171,9 @@
     <ng-template let-feedback pTemplate="item">
       <div class="feedback" id="feedback">
         <div class="card_container">
-          <div class="card">
+          <div class="card" data-aos="fade-up">
             <div class="image">
-              <img src="{{ feedback.image }}" alt="" />
+              <img src="{{ feedback.image }}" alt="{{feedback.text}}" />
             </div>
             <div class="border"></div>
             <div class="top_container">

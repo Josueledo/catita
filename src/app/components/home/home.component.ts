@@ -1,6 +1,13 @@
 import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { Carousel } from 'primeng/carousel';
+import * as AOS from 'aos';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -55,7 +62,7 @@ import { WhatsappComponent } from '../whatsapp/whatsapp.component';
     TabViewModule,
     HeaderComponent,
     CommonModule,
-    WhatsappComponent
+    WhatsappComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -129,24 +136,23 @@ export class HomeComponent {
     {
       id: 1,
       url: '/banner1.png',
-      responsiveUrl:'/banner1Mobile.png'
+      responsiveUrl: '/banner1Mobile.png',
     },
     {
       id: 2,
       url: '/banner2.png',
-      responsiveUrl:'/banner2Mobile.png'
+      responsiveUrl: '/banner2Mobile.png',
     },
     {
       id: 3,
       url: '/banner3.png',
-      responsiveUrl:'/banner3Mobile.png'
+      responsiveUrl: '/banner3Mobile.png',
     },
     {
       id: 4,
       url: '/banner4.png',
-      responsiveUrl:'/banner4Mobile.png'
+      responsiveUrl: '/banner4Mobile.png',
     },
-
   ];
   displayedImages: { id: number; url: string }[] = [];
 
@@ -172,7 +178,7 @@ export class HomeComponent {
     this.crudService.getItems().subscribe((data) => {
       this.products = data;
       this.latestProducts = this.filterLatestProducts(data);
-      console.log(this.latestProducts)
+      console.log(this.latestProducts);
       this.moreSold = data.filter((product) => product.maisVendido);
     });
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -191,6 +197,12 @@ export class HomeComponent {
     }));
   }
   ngOnInit() {
+    AOS.init({
+      duration: 800, // duração em milissegundos
+      easing: 'ease-in-out', // tipo de easing
+      once: false, // animação só ocorre uma vez
+    });
+    window.addEventListener('load', AOS.refresh);
     this.responsiveOptions = [
       {
         breakpoint: '1400px',
@@ -242,7 +254,7 @@ export class HomeComponent {
   }
   filterLatestProducts(products: any[]): any[] {
     // Filtrar itens que possuem o campo `dataPostagem`
-    const filteredProducts = products.filter(product => product.postDate);
+    const filteredProducts = products.filter((product) => product.postDate);
 
     // Ordenar os produtos por `dataPostagem` em ordem decrescente
     const sortedProducts = filteredProducts.sort((a, b) => {
@@ -255,7 +267,6 @@ export class HomeComponent {
     return sortedProducts.slice(0, 8);
   }
 
-
   onSearch(): void {
     if (this.searchTerm.trim()) {
       this.router.navigate(['/search'], {
@@ -264,27 +275,27 @@ export class HomeComponent {
     }
   }
 
-  openNfl(){
+  openNfl() {
     this.router.navigate(['/search'], {
       queryParams: { categories: 'camisas da nfl' },
     });
   }
-  openNba(){
+  openNba() {
     this.router.navigate(['/search'], {
       queryParams: { categories: 'camisas de basquete' },
     });
   }
-  babylook(){
+  babylook() {
     this.router.navigate(['/search'], {
       queryParams: { categories: 'Feminina' },
     });
   }
-  envioImediato(){
+  envioImediato() {
     this.router.navigate(['/search'], {
       queryParams: { filter: 'Pronta entrega' },
     });
   }
-  conjuntoInfantil(){
+  conjuntoInfantil() {
     this.router.navigate(['/search'], {
       queryParams: { categories: 'Conjunto Infantil' },
     });

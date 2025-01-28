@@ -7,13 +7,13 @@
 
     <div class="card_left">
       <div class="image_main">
-        <img [src]="selectedImage" alt="Produto principal" />
+        <img [src]="selectedImage" alt="{{product.title}}" />
       </div>
       <div class="image_container">
         <img
           *ngFor="let image of secondaryImages"
           [src]="image"
-          alt="Imagem do produto"
+          alt="{{product.title}}"
           (click)="updateMainImage(image)"
           [class.active]="image === selectedImage"
         />

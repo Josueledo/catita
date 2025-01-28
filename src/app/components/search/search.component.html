@@ -11,7 +11,7 @@
       <li *ngFor="let product of filteredProducts">
         <div class="card" routerLink="/product-details/{{ product.id }}">
           <div class="img_container">
-            <img src="{{ product.image1 }}" alt="" />
+            <img src="{{ product.image1 }}" alt="{{product.title}}" />
           </div>
           <div class="title">
             <h2>{{ product.title }}</h2>
