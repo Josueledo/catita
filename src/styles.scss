@@ -18,6 +18,7 @@ $whiteGray: rgb(190, 190, 190);
 p-carousel {
   width: 90%;
   touch-action: pan-y !important; /* Garante que os filhos respeitem o scroll vertical */
+  overflow-y: auto !important;
 
   .p-carousel-content-container {
     .p-carousel-content {
@@ -47,8 +48,14 @@ p-carousel {
     }
   }
 }
+.custom-carousel {
+  overflow: visible !important;
+  touch-action: auto !important;
+}
 
-
+.custom-carousel .p-carousel-content {
+  overflow: auto !important; /* Permite rolagem dentro do carrossel */
+}
 .p-carousel-viewport {
   overflow: hidden;
   max-width: 1200px;

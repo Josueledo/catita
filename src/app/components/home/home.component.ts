@@ -23,7 +23,7 @@ import {
   faTrophy,
   faLock,
 } from '@fortawesome/free-solid-svg-icons';
-import { CarouselModule } from 'primeng/carousel';
+import { Carousel, CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { CrudService } from '../../services/crud.service';
 import { Router, RouterLink } from '@angular/router';
@@ -160,6 +160,7 @@ export class HomeComponent {
     private router: Router,
     private fb: FormBuilder
   ) {
+    Carousel.prototype.onTouchMove = () => { };
     if (isPlatformBrowser(this.platformId)) {
       // Executa apenas no navegador
       this.updateImageUrls();
@@ -182,6 +183,8 @@ export class HomeComponent {
     });
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
+ 
+
   @HostListener('window:resize', [])
   onResize() {
     this.updateImageUrls(); // Atualizar as URLs ao redimensionar a janela
@@ -195,7 +198,9 @@ export class HomeComponent {
       url: isSmallScreen ? image.responsiveUrl : image.url,
     }));
   }
+ 
   ngOnInit() {
+  
     AOS.init({
       duration: 800, // duração em milissegundos
       easing: 'ease-in-out', // tipo de easing
@@ -225,6 +230,7 @@ export class HomeComponent {
       },
     ];
   }
+  
   ngOnDestroy(): void {
     if (isPlatformBrowser(this.platformId)) {
       // Remove o evento no navegador
